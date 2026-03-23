@@ -8,27 +8,27 @@ export const metadata = {
 export default function PrivacyPolicy() {
   return (
     <div className="min-h-screen">
-      <nav className="fixed top-0 z-50 w-full border-b border-white/5 bg-page-bg/80 backdrop-blur-xl">
+      <nav className="fixed top-0 z-50 w-full border-b border-black/5 bg-page-bg/80 backdrop-blur-xl">
         <div className="mx-auto flex h-14 max-w-6xl items-center px-6">
           <Link href="/" className="flex items-center gap-2.5">
-            <div className="flex h-7 w-7 items-center justify-center rounded-lg bg-accent text-xs font-black text-white">M</div>
+            <img src="/app-icon.png" alt="Memori" className="h-7 w-7 rounded-lg" />
             <span className="text-base font-bold text-text-primary">Memori</span>
           </Link>
         </div>
       </nav>
 
       <main className="mx-auto max-w-3xl px-6 pt-28 pb-24">
-        <div className="mb-5 inline-flex items-center gap-2 rounded-full border border-teal/20 bg-teal/5 px-4 py-1.5">
-          <span className="text-xs font-bold text-teal">Your data stays on your device</span>
+        <div className="mb-5 inline-flex items-center gap-2 rounded-full border border-teal/15 bg-teal/5 px-4 py-1.5">
+          <span className="text-xs font-bold text-teal">Privacy-first, always</span>
         </div>
 
         <h1 className="mb-2 text-3xl font-black text-text-primary">Privacy Policy</h1>
-        <p className="mb-10 text-sm font-medium text-text-tertiary">Last updated: March 6, 2026</p>
+        <p className="mb-10 text-sm font-medium text-text-tertiary">Last updated: March 23, 2026</p>
 
         <div className="space-y-8 text-text-secondary leading-relaxed [&_h2]:mb-3 [&_h2]:mt-8 [&_h2]:text-lg [&_h2]:font-bold [&_h2]:text-text-primary [&_strong]:text-text-primary [&_ul]:ml-6 [&_ul]:list-disc [&_ul]:space-y-1">
           <section>
             <h2>Our Core Principle</h2>
-            <p><strong>Your data stays on your device. Always.</strong> Memori is designed with privacy as a fundamental principle, not an afterthought. We do not collect, store, or transmit your personal data to any server.</p>
+            <p><strong>Your personal data stays on your device.</strong> Memori is designed with privacy as a fundamental principle, not an afterthought. We collect only anonymous, aggregated analytics to improve the app — never personal data, never identifiable information.</p>
           </section>
 
           <section>
@@ -45,47 +45,53 @@ export default function PrivacyPolicy() {
 
           <section>
             <h2>No Accounts Required</h2>
-            <p>Memori does not require you to create an account, provide an email address, or sign in with any service. There is no user registration process.</p>
+            <p>Memori does not require you to create an account, provide an email address, or sign in with any service.</p>
           </section>
 
           <section>
-            <h2>No Analytics or Tracking</h2>
-            <p>We do not use any third-party analytics services, advertising SDKs, or tracking tools. We do not collect usage metrics, crash reports, or behavioral data.</p>
+            <h2>Anonymous Analytics</h2>
+            <p>We use <strong>TelemetryDeck</strong>, a privacy-focused analytics service, to collect anonymous usage data. This helps us understand how the app is used so we can improve it. TelemetryDeck does not collect any personally identifiable information. Data collected includes:</p>
+            <ul>
+              <li>Anonymous usage signals (e.g., which exercises are played, screens visited)</li>
+              <li>App version and device type (no unique device identifiers)</li>
+              <li>Aggregate session counts</li>
+            </ul>
+            <p className="mt-3">TelemetryDeck is GDPR-compliant and does not use cookies, fingerprinting, or any form of cross-app tracking. No advertising SDKs or tracking tools are used. Learn more at <a href="https://telemetrydeck.com/privacy" className="font-bold text-accent underline">telemetrydeck.com/privacy</a>.</p>
           </section>
 
           <section>
             <h2>Apple Services</h2>
-            <p>Memori integrates with the following Apple services, which are governed by Apple&apos;s own privacy policies:</p>
+            <p>Memori integrates with the following Apple services, governed by Apple&apos;s own privacy policies:</p>
             <ul>
-              <li><strong>Game Center:</strong> If you choose to sign in to Game Center, your scores may be shared on leaderboards. This is managed entirely by Apple.</li>
-              <li><strong>StoreKit / In-App Purchases:</strong> Subscription purchases are processed by Apple. We do not have access to your payment information.</li>
-              <li><strong>Notifications:</strong> If you enable notifications, they are scheduled locally on your device. No data is sent to external push notification services.</li>
+              <li><strong>Game Center:</strong> If you sign in to Game Center, your scores may appear on leaderboards. Managed entirely by Apple.</li>
+              <li><strong>StoreKit / In-App Purchases:</strong> Subscription purchases are processed by Apple. We do not access your payment information.</li>
+              <li><strong>Notifications:</strong> Scheduled locally on your device. No external push services.</li>
             </ul>
           </section>
 
           <section>
             <h2>Data Sharing</h2>
-            <p>Memori includes share features that let you share your Brain Score and challenge cards with friends. When you use these features, the shared content is handled by iOS&apos;s built-in share sheet. We have no involvement in or access to this sharing process.</p>
+            <p>Share features use iOS&apos;s built-in share sheet. We have no involvement in or access to this process.</p>
           </section>
 
           <section>
             <h2>Data Deletion</h2>
-            <p>You can delete all your data at any time from Settings → Reset All Data within the app. Uninstalling the app will also remove all locally stored data.</p>
+            <p>Delete all data from Settings → Reset All Data, or uninstall the app.</p>
           </section>
 
           <section>
             <h2>Children&apos;s Privacy</h2>
-            <p>Memori is not directed at children under the age of 13. We do not knowingly collect any information from children.</p>
+            <p>Memori is not directed at children under 13. We do not knowingly collect information from children.</p>
           </section>
 
           <section>
             <h2>Changes to This Policy</h2>
-            <p>We may update this privacy policy from time to time. Any changes will be reflected on this page with an updated date.</p>
+            <p>Changes will be reflected on this page with an updated date.</p>
           </section>
 
           <section>
             <h2>Contact</h2>
-            <p>If you have questions about this privacy policy, contact us at <a href="mailto:dylanbryanmiller@gmail.com" className="font-bold text-accent underline">dylanbryanmiller@gmail.com</a>.</p>
+            <p>Questions? Email <a href="mailto:dylanbryanmiller@gmail.com" className="font-bold text-accent underline">dylanbryanmiller@gmail.com</a>.</p>
           </section>
         </div>
       </main>

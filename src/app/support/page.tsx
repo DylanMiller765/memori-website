@@ -8,17 +8,17 @@ export const metadata = {
 export default function Support() {
   return (
     <div className="min-h-screen">
-      <nav className="fixed top-0 z-50 w-full border-b border-white/5 bg-page-bg/80 backdrop-blur-xl">
+      <nav className="fixed top-0 z-50 w-full border-b border-black/5 bg-page-bg/80 backdrop-blur-xl">
         <div className="mx-auto flex h-14 max-w-6xl items-center px-6">
           <Link href="/" className="flex items-center gap-2.5">
-            <div className="flex h-7 w-7 items-center justify-center rounded-lg bg-accent text-xs font-black text-white">M</div>
+            <img src="/app-icon.png" alt="Memori" className="h-7 w-7 rounded-lg" />
             <span className="text-base font-bold text-text-primary">Memori</span>
           </Link>
         </div>
       </nav>
 
       <main className="mx-auto max-w-3xl px-6 pt-28 pb-24">
-        <div className="mb-5 inline-flex items-center gap-2 rounded-full border border-accent/20 bg-accent/5 px-4 py-1.5">
+        <div className="mb-5 inline-flex items-center gap-2 rounded-full border border-accent/15 bg-accent/5 px-4 py-1.5">
           <span className="text-xs font-bold text-accent">We&apos;re here to help</span>
         </div>
 
@@ -26,7 +26,7 @@ export default function Support() {
         <p className="mb-10 text-base text-text-secondary">Find answers to common questions or get in touch.</p>
 
         {/* Contact */}
-        <div className="card-glass mb-10 p-7">
+        <div className="card mb-10 p-7">
           <h2 className="mb-2 text-lg font-bold text-text-primary">Contact Us</h2>
           <p className="mb-4 text-sm text-text-secondary">
             Have a question, found a bug, or want to suggest a feature? We&apos;d love to hear from you.
@@ -47,7 +47,7 @@ export default function Support() {
           />
           <FaqItem
             q="How is my Brain Score calculated?"
-            a="Your Brain Score is based on a 2-minute assessment that tests three cognitive areas: digit span (memory), reaction time (processing speed), and visual memory (attention). The composite score ranges from 0-1000."
+            a="Your Brain Score is based on a 2-minute assessment testing three cognitive areas: digit span (memory), reaction time (processing speed), and visual memory (attention). The composite score ranges from 0-1000."
           />
           <FaqItem
             q="Is my data private?"
@@ -63,24 +63,24 @@ export default function Support() {
           />
           <FaqItem
             q="What does Brain Age mean?"
-            a="Brain Age is an estimate of your cognitive performance relative to age norms. A Brain Age lower than your actual age means your cognitive performance is above average for your age group. It's for entertainment purposes and is not a medical assessment."
+            a="Brain Age estimates your cognitive performance relative to age norms. A Brain Age lower than your actual age means above-average performance. It's for entertainment purposes, not a medical assessment."
           />
           <FaqItem
             q="How do leaderboards work?"
-            a="Leaderboards use Apple's Game Center. Sign in to Game Center in your iPhone settings, and your scores will automatically appear on global leaderboards for each game and your overall Brain Score."
+            a="Leaderboards use Apple's Game Center. Sign in to Game Center in your iPhone settings, and your scores will automatically appear on global leaderboards."
           />
           <FaqItem
             q="How do I delete my data?"
-            a="Go to Profile → scroll to the bottom → tap 'Reset All Data'. This permanently deletes all your scores, streaks, and achievements. Alternatively, uninstalling the app removes all data."
+            a="Go to Profile → scroll to the bottom → tap 'Reset All Data'. This permanently deletes all scores, streaks, and achievements. Uninstalling the app also removes all data."
           />
           <FaqItem
             q="The app isn't working correctly. What should I do?"
-            a="Try closing and reopening the app. If the issue persists, make sure you're running the latest version from the App Store. If it still doesn't work, email us with a description of the problem and your iOS version."
+            a="Try closing and reopening the app. Make sure you're running the latest version from the App Store. If it still doesn't work, email us with a description of the problem and your iOS version."
           />
         </div>
 
         {/* Manage Subscription */}
-        <div className="mt-12 card-glass p-7">
+        <div className="mt-12 card p-7">
           <h2 className="mb-2 text-lg font-bold text-text-primary">Manage Subscription</h2>
           <p className="mb-4 text-sm text-text-secondary">
             View, change, or cancel your Memori Pro subscription through Apple.
@@ -101,7 +101,7 @@ export default function Support() {
 
 function FaqItem({ q, a }: { q: string; a: string }) {
   return (
-    <div className="card-glass p-5">
+    <div className="card p-5">
       <h3 className="mb-2 text-sm font-bold text-text-primary">{q}</h3>
       <p className="text-sm leading-relaxed text-text-secondary">{a}</p>
     </div>

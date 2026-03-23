@@ -11,15 +11,13 @@
   --color-sky: #409CFB;
   --color-amber: #F5A623;
   --color-rose: #FF6B8A;
-  --color-surface: #1C1C1E;
-  --color-surface-2: #2C2C2E;
-  --color-surface-3: #3A3A3C;
-  --color-card: rgba(255, 255, 255, 0.06);
-  --color-card-border: rgba(255, 255, 255, 0.08);
-  --color-page-bg: #111113;
-  --color-text-primary: #F5F5F7;
-  --color-text-secondary: #8E8E93;
-  --color-text-tertiary: #636366;
+  --color-page-bg: #F8F6F3;
+  --color-surface: #FFFFFF;
+  --color-surface-2: #F2EFEC;
+  --color-card-border: rgba(0, 0, 0, 0.06);
+  --color-text-primary: #1A1A1A;
+  --color-text-secondary: #6B6B6B;
+  --color-text-tertiary: #9A9A9A;
   --font-display: 'Inter', sans-serif;
   --font-body: 'Inter', sans-serif;
 }
@@ -37,7 +35,7 @@ body {
 }
 
 ::selection {
-  background: rgba(56, 133, 245, 0.3);
+  background: rgba(56, 133, 245, 0.2);
 }
 
 /* Animations */
@@ -57,13 +55,8 @@ body {
 }
 
 @keyframes pulse-glow {
-  0%, 100% { box-shadow: 0 0 20px rgba(56, 133, 245, 0.15); }
-  50% { box-shadow: 0 0 40px rgba(56, 133, 245, 0.3); }
-}
-
-@keyframes shimmer {
-  0% { background-position: -200% 0; }
-  100% { background-position: 200% 0; }
+  0%, 100% { box-shadow: 0 0 20px rgba(56, 133, 245, 0.1); }
+  50% { box-shadow: 0 0 40px rgba(56, 133, 245, 0.2); }
 }
 
 .animate-float { animation: float 4s ease-in-out infinite; }
@@ -77,18 +70,16 @@ body {
 .delay-4 { animation-delay: 0.4s; opacity: 0; }
 .delay-5 { animation-delay: 0.5s; opacity: 0; }
 
-/* Glass card */
-.card-glass {
-  background: rgba(255, 255, 255, 0.05);
-  border: 1px solid rgba(255, 255, 255, 0.08);
+/* Card */
+.card {
+  background: white;
+  border: 1px solid rgba(0, 0, 0, 0.06);
   border-radius: 20px;
-  backdrop-filter: blur(20px);
-  -webkit-backdrop-filter: blur(20px);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04), 0 8px 32px rgba(0, 0, 0, 0.04);
   transition: all 0.3s ease;
 }
-.card-glass:hover {
-  background: rgba(255, 255, 255, 0.08);
-  border-color: rgba(255, 255, 255, 0.12);
+.card:hover {
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.06), 0 16px 48px rgba(0, 0, 0, 0.06);
   transform: translateY(-2px);
 }
 
@@ -113,11 +104,11 @@ body {
   background: linear-gradient(135deg, #3885F5, #2E6FD4);
   color: white;
   transition: all 0.2s ease;
-  box-shadow: 0 4px 16px rgba(56, 133, 245, 0.3);
+  box-shadow: 0 4px 16px rgba(56, 133, 245, 0.25);
 }
 .btn-primary:hover {
   transform: translateY(-1px);
-  box-shadow: 0 6px 24px rgba(56, 133, 245, 0.4);
+  box-shadow: 0 6px 24px rgba(56, 133, 245, 0.35);
 }
 .btn-primary:active {
   transform: translateY(1px);
@@ -133,14 +124,15 @@ body {
   border-radius: 14px;
   font-weight: 700;
   font-size: 16px;
-  background: rgba(255, 255, 255, 0.06);
-  border: 1px solid rgba(255, 255, 255, 0.1);
-  color: white;
+  background: white;
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  color: var(--color-text-primary);
   transition: all 0.2s ease;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
 }
 .btn-secondary:hover {
-  background: rgba(255, 255, 255, 0.1);
-  border-color: rgba(255, 255, 255, 0.15);
+  background: var(--color-surface-2);
+  border-color: rgba(0, 0, 0, 0.15);
 }
 
 /* Glow orbs */

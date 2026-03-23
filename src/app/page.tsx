@@ -5,12 +5,12 @@ function GameCard({ icon, title, desc, color, delay }: {
   icon: string; title: string; desc: string; color: string; delay: string;
 }) {
   return (
-    <div className="card-glass p-5 animate-slide-up" style={{ animationDelay: delay, opacity: 0 }}>
+    <div className="card p-5 animate-slide-up" style={{ animationDelay: delay, opacity: 0 }}>
       <div
         className="mb-3 flex h-11 w-11 items-center justify-center rounded-xl text-xl"
-        style={{ background: `${color}20` }}
+        style={{ background: `${color}15` }}
       >
-        <span style={{ filter: "none" }}>{icon}</span>
+        {icon}
       </div>
       <h3 className="mb-1 text-sm font-bold text-text-primary">{title}</h3>
       <p className="text-xs leading-relaxed text-text-secondary">{desc}</p>
@@ -27,13 +27,12 @@ function ScoreRing() {
 
   return (
     <div className="relative animate-float">
-      <div className="card-glass animate-pulse-glow relative overflow-hidden p-8 text-center">
-        {/* Subtle gradient overlay */}
-        <div className="absolute inset-0 bg-gradient-to-br from-accent/5 to-transparent" />
+      <div className="card animate-pulse-glow relative overflow-hidden p-8 text-center">
+        <div className="absolute inset-0 bg-gradient-to-br from-accent/[0.03] to-transparent" />
 
         <div className="relative">
           <svg width="160" height="160" viewBox="0 0 160 160" className="mx-auto">
-            <circle cx="80" cy="80" r="68" fill="none" stroke="rgba(255,255,255,0.06)" strokeWidth="12" />
+            <circle cx="80" cy="80" r="68" fill="none" stroke="rgba(0,0,0,0.05)" strokeWidth="12" />
             <circle
               cx="80" cy="80" r="68" fill="none"
               stroke="url(#scoreGrad)" strokeWidth="12" strokeLinecap="round"
@@ -56,7 +55,7 @@ function ScoreRing() {
         </div>
 
         <div className="relative mt-5 flex items-center justify-center gap-3">
-          <span className="rounded-full bg-white/5 px-3 py-1.5 text-xs font-bold text-text-secondary">
+          <span className="rounded-full bg-surface-2 px-3 py-1.5 text-xs font-bold text-text-secondary">
             Brain Age: <span className="text-accent">24</span>
           </span>
           <span className="rounded-full bg-accent/10 px-3 py-1.5 text-xs font-bold text-accent">
@@ -73,8 +72,8 @@ function Step({ num, title, desc, delay }: {
   num: string; title: string; desc: string; delay: string;
 }) {
   return (
-    <div className="card-glass relative p-7 text-center animate-slide-up" style={{ animationDelay: delay, opacity: 0 }}>
-      <div className="mx-auto mb-4 flex h-10 w-10 items-center justify-center rounded-full bg-accent/15 text-sm font-black text-accent">
+    <div className="card relative p-7 text-center animate-slide-up" style={{ animationDelay: delay, opacity: 0 }}>
+      <div className="mx-auto mb-4 flex h-10 w-10 items-center justify-center rounded-full bg-accent/10 text-sm font-black text-accent">
         {num}
       </div>
       <h3 className="mb-2 text-base font-bold">{title}</h3>
@@ -87,7 +86,7 @@ function Step({ num, title, desc, delay }: {
 function FeatureRow({ icon, title, desc }: { icon: string; title: string; desc: string }) {
   return (
     <div className="flex items-start gap-4">
-      <div className="flex h-10 w-10 flex-shrink-0 items-center justify-center rounded-xl bg-accent/10 text-lg">
+      <div className="flex h-10 w-10 flex-shrink-0 items-center justify-center rounded-xl bg-accent/8 text-lg">
         {icon}
       </div>
       <div>
@@ -105,10 +104,10 @@ export default function Home() {
     <div className="relative min-h-screen">
 
       {/* ─── Nav ─── */}
-      <nav className="fixed top-0 z-50 w-full border-b border-white/5 bg-page-bg/80 backdrop-blur-xl">
+      <nav className="fixed top-0 z-50 w-full border-b border-black/5 bg-page-bg/80 backdrop-blur-xl">
         <div className="mx-auto flex h-14 max-w-6xl items-center justify-between px-6">
           <Link href="/" className="flex items-center gap-2.5">
-            <div className="flex h-7 w-7 items-center justify-center rounded-lg bg-accent text-xs font-black text-white">M</div>
+            <img src="/app-icon.png" alt="Memori" className="h-7 w-7 rounded-lg" />
             <span className="text-base font-bold text-text-primary">Memori</span>
           </Link>
           <div className="flex items-center gap-2">
@@ -127,16 +126,14 @@ export default function Home() {
 
       {/* ─── Hero ─── */}
       <section className="relative overflow-hidden pt-28 pb-16 md:pt-36 md:pb-24">
-        {/* Background glow orbs */}
         <div className="glow-orb h-[400px] w-[400px] bg-accent/8 top-[-10%] left-[-10%]" />
         <div className="glow-orb h-[300px] w-[300px] bg-violet/6 top-[20%] right-[-5%]" />
         <div className="glow-orb h-[200px] w-[200px] bg-teal/5 bottom-[0%] left-[30%]" />
 
         <div className="relative z-10 mx-auto max-w-6xl px-6">
           <div className="flex flex-col items-center gap-12 lg:flex-row lg:items-center lg:justify-between">
-            {/* Left content */}
             <div className="max-w-xl text-center lg:text-left">
-              <div className="animate-fade-in mb-5 inline-flex items-center gap-2 rounded-full border border-accent/20 bg-accent/5 px-4 py-1.5">
+              <div className="animate-fade-in mb-5 inline-flex items-center gap-2 rounded-full border border-accent/15 bg-accent/5 px-4 py-1.5">
                 <span className="text-xs font-bold text-accent">Science-backed brain training</span>
               </div>
 
@@ -163,7 +160,6 @@ export default function Home() {
               </div>
             </div>
 
-            {/* Right — Score Ring */}
             <div className="w-72 flex-shrink-0">
               <ScoreRing />
             </div>
@@ -180,7 +176,7 @@ export default function Home() {
             { value: "30+", label: "Achievements" },
             { value: "100%", label: "Private" },
           ].map((stat, i) => (
-            <div key={stat.label} className="card-glass animate-slide-up px-4 py-4 text-center" style={{ animationDelay: `${0.1 + i * 0.08}s`, opacity: 0 }}>
+            <div key={stat.label} className="card animate-slide-up px-4 py-4 text-center" style={{ animationDelay: `${0.1 + i * 0.08}s`, opacity: 0 }}>
               <p className="text-xl font-black text-text-primary">{stat.value}</p>
               <p className="text-xs font-medium text-text-secondary">{stat.label}</p>
             </div>
@@ -217,7 +213,8 @@ export default function Home() {
 
       {/* ─── How It Works ─── */}
       <section id="how" className="relative overflow-hidden py-20 px-6">
-        <div className="glow-orb h-[300px] w-[300px] bg-accent/6 bottom-[0%] left-[-5%]" />
+        <div className="absolute inset-0 bg-gradient-to-b from-page-bg via-surface-2/50 to-page-bg" />
+        <div className="glow-orb h-[300px] w-[300px] bg-accent/5 bottom-[0%] left-[-5%]" />
 
         <div className="relative mx-auto max-w-4xl">
           <div className="mb-12 text-center">
@@ -257,8 +254,8 @@ export default function Home() {
       {/* ─── Challenge ─── */}
       <section className="py-20 px-6">
         <div className="mx-auto max-w-3xl">
-          <div className="card-glass relative overflow-hidden p-10 text-center md:p-14">
-            <div className="absolute inset-0 bg-gradient-to-br from-accent/5 via-transparent to-violet/5" />
+          <div className="card relative overflow-hidden p-10 text-center md:p-14">
+            <div className="absolute inset-0 bg-gradient-to-br from-accent/[0.03] via-transparent to-violet/[0.03]" />
 
             <div className="relative">
               <h2 className="mb-3 text-3xl font-black md:text-4xl">
@@ -269,12 +266,12 @@ export default function Home() {
               </p>
 
               <div className="mb-8 flex items-center justify-center gap-3">
-                <div className="-rotate-3 rounded-2xl bg-gradient-to-br from-accent to-accent-light p-5 text-white shadow-lg shadow-accent/20">
+                <div className="-rotate-3 rounded-2xl bg-gradient-to-br from-accent to-accent-light p-5 text-white shadow-lg shadow-accent/15">
                   <p className="text-[10px] font-bold uppercase tracking-widest opacity-60">Brain Score</p>
                   <p className="text-3xl font-black">748</p>
                   <p className="mt-1 text-[10px] font-bold opacity-80">Brain Age: 24</p>
                 </div>
-                <div className="rotate-2 rounded-2xl bg-gradient-to-br from-violet to-indigo p-5 text-white shadow-lg shadow-violet/20">
+                <div className="rotate-2 rounded-2xl bg-gradient-to-br from-violet to-indigo p-5 text-white shadow-lg shadow-violet/15">
                   <p className="text-[10px] font-bold uppercase tracking-widest opacity-60">Your Turn</p>
                   <p className="text-3xl font-black">???</p>
                   <p className="mt-1 text-[10px] font-bold opacity-80">Can you beat me?</p>
@@ -291,6 +288,7 @@ export default function Home() {
 
       {/* ─── Pricing ─── */}
       <section className="py-20 px-6">
+        <div className="absolute inset-0 bg-gradient-to-b from-page-bg via-surface-2/30 to-page-bg" />
         <div className="relative mx-auto max-w-3xl">
           <div className="mb-12 text-center">
             <h2 className="mb-3 text-3xl font-black md:text-4xl">
@@ -300,32 +298,32 @@ export default function Home() {
           </div>
 
           <div className="grid gap-4 md:grid-cols-2">
-            <div className="card-glass p-7">
+            <div className="card p-7">
               <h3 className="mb-1 text-lg font-bold">Free</h3>
               <p className="mb-5 text-sm text-text-secondary">Everything you need to get started</p>
               <ul className="space-y-2.5 text-sm text-text-secondary">
-                <li className="flex items-center gap-2"><span className="text-teal">✓</span> All 8 cognitive games</li>
-                <li className="flex items-center gap-2"><span className="text-teal">✓</span> Brain Score assessment</li>
-                <li className="flex items-center gap-2"><span className="text-teal">✓</span> 3 sessions per day</li>
-                <li className="flex items-center gap-2"><span className="text-teal">✓</span> Streak tracking</li>
-                <li className="flex items-center gap-2"><span className="text-teal">✓</span> Leaderboards</li>
+                <li className="flex items-center gap-2"><span className="text-teal font-bold">✓</span> All 8 cognitive games</li>
+                <li className="flex items-center gap-2"><span className="text-teal font-bold">✓</span> Brain Score assessment</li>
+                <li className="flex items-center gap-2"><span className="text-teal font-bold">✓</span> 3 sessions per day</li>
+                <li className="flex items-center gap-2"><span className="text-teal font-bold">✓</span> Streak tracking</li>
+                <li className="flex items-center gap-2"><span className="text-teal font-bold">✓</span> Leaderboards</li>
               </ul>
             </div>
 
-            <div className="card-glass relative overflow-hidden p-7 border-accent/20">
-              <div className="absolute inset-0 bg-gradient-to-br from-accent/5 to-transparent" />
+            <div className="card relative overflow-hidden p-7" style={{ borderColor: "rgba(56, 133, 245, 0.15)" }}>
+              <div className="absolute inset-0 bg-gradient-to-br from-accent/[0.03] to-transparent" />
               <div className="relative">
                 <div className="mb-1 flex items-center gap-2">
                   <h3 className="text-lg font-bold">Pro</h3>
-                  <span className="rounded-full bg-accent/15 px-2 py-0.5 text-[10px] font-bold text-accent">POPULAR</span>
+                  <span className="rounded-full bg-accent/10 px-2 py-0.5 text-[10px] font-bold text-accent">POPULAR</span>
                 </div>
                 <p className="mb-5 text-sm text-text-secondary">$3.99/mo or $19.99/yr <span className="text-teal font-bold">(save 58%)</span></p>
                 <ul className="space-y-2.5 text-sm text-text-secondary">
-                  <li className="flex items-center gap-2"><span className="text-accent">✓</span> <span className="text-text-primary font-medium">Unlimited training</span></li>
-                  <li className="flex items-center gap-2"><span className="text-accent">✓</span> Everything in Free</li>
-                  <li className="flex items-center gap-2"><span className="text-accent">✓</span> Detailed analytics</li>
-                  <li className="flex items-center gap-2"><span className="text-accent">✓</span> All future games & features</li>
-                  <li className="flex items-center gap-2"><span className="text-accent">✓</span> Support development</li>
+                  <li className="flex items-center gap-2"><span className="text-accent font-bold">✓</span> <span className="text-text-primary font-medium">Unlimited training</span></li>
+                  <li className="flex items-center gap-2"><span className="text-accent font-bold">✓</span> Everything in Free</li>
+                  <li className="flex items-center gap-2"><span className="text-accent font-bold">✓</span> Detailed analytics</li>
+                  <li className="flex items-center gap-2"><span className="text-accent font-bold">✓</span> All future games & features</li>
+                  <li className="flex items-center gap-2"><span className="text-accent font-bold">✓</span> Support development</li>
                 </ul>
               </div>
             </div>
@@ -335,7 +333,7 @@ export default function Home() {
 
       {/* ─── CTA ─── */}
       <section id="download" className="relative overflow-hidden py-24 px-6">
-        <div className="glow-orb h-[400px] w-[400px] bg-accent/8 top-[20%] left-[30%]" />
+        <div className="glow-orb h-[400px] w-[400px] bg-accent/6 top-[20%] left-[30%]" />
 
         <div className="relative mx-auto max-w-3xl text-center">
           <h2 className="mb-4 text-4xl font-black md:text-5xl">
@@ -357,7 +355,7 @@ export default function Home() {
       </section>
 
       {/* ─── Footer ─── */}
-      <footer className="border-t border-white/5 py-10 px-6">
+      <footer className="border-t border-black/5 py-10 px-6">
         <div className="mx-auto flex max-w-6xl flex-col items-center gap-6 sm:flex-row sm:justify-between">
           <div className="flex items-center gap-2">
             <div className="flex h-6 w-6 items-center justify-center rounded-md bg-accent text-[10px] font-black text-white">M</div>
