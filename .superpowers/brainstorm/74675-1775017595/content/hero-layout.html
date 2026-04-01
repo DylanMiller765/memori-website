@@ -1,0 +1,53 @@
+<h2>How should the mascot appear in the hero section?</h2>
+<p class="subtitle">This is the first thing visitors see — the mascot needs to be the star</p>
+
+<div class="cards">
+  <div class="card" data-choice="a" onclick="toggleSelect(this)">
+    <div class="card-image" style="background: linear-gradient(135deg, #f0f4ff, #e8eeff); padding: 24px; text-align: center; min-height: 220px; display: flex; flex-direction: column; align-items: center; justify-content: center;">
+      <div style="display: flex; align-items: center; gap: 32px;">
+        <div style="text-align: left;">
+          <div style="font-size: 11px; font-weight: 700; color: #3885f5; letter-spacing: 1px; margin-bottom: 6px;">BRAIN TRAINING APP</div>
+          <div style="font-size: 26px; font-weight: 900; color: #1a1a2e; line-height: 1.2;">How Old Is<br>Your Brain?</div>
+          <div style="font-size: 13px; color: #6b6b6b; margin-top: 8px;">8 games. 2 min test. Free.</div>
+          <div style="margin-top: 14px; background: #1a1a2e; padding: 8px 20px; border-radius: 10px; color: white; font-weight: 700; font-size: 13px; display: inline-block;">Download Free</div>
+        </div>
+        <div style="width: 120px; height: 120px; background: linear-gradient(135deg, #dbeafe, #c7d2fe); border-radius: 24px; display: flex; align-items: center; justify-content: center; font-size: 64px; box-shadow: 0 8px 32px rgba(56,133,245,0.2);">🧠</div>
+      </div>
+      <div style="font-size: 10px; color: #9a9a9a; margin-top: 12px;">← mascot-wave image here</div>
+    </div>
+    <div class="card-body">
+      <h3>A. Side-by-Side</h3>
+      <p>Text left, big mascot right. Classic app landing page. Clean, professional, easy to scan. Mascot at ~200px.</p>
+    </div>
+  </div>
+
+  <div class="card" data-choice="b" onclick="toggleSelect(this)">
+    <div class="card-image" style="background: linear-gradient(135deg, #f0f4ff, #e8eeff); padding: 24px; text-align: center; min-height: 220px; display: flex; flex-direction: column; align-items: center; justify-content: center;">
+      <div style="width: 100px; height: 100px; background: linear-gradient(135deg, #dbeafe, #c7d2fe); border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 52px; box-shadow: 0 8px 32px rgba(56,133,245,0.2); margin-bottom: 12px;">🧠</div>
+      <div style="font-size: 26px; font-weight: 900; color: #1a1a2e; line-height: 1.2;">How Old Is Your Brain?</div>
+      <div style="font-size: 13px; color: #6b6b6b; margin-top: 6px;">Train your brain. Track your score. Compete globally.</div>
+      <div style="margin-top: 14px; background: #1a1a2e; padding: 8px 20px; border-radius: 10px; color: white; font-weight: 700; font-size: 13px; display: inline-block;">Download Free</div>
+      <div style="font-size: 10px; color: #9a9a9a; margin-top: 8px;">← mascot-wave floats/bobs above text</div>
+    </div>
+    <div class="card-body">
+      <h3>B. Mascot Above, Centered</h3>
+      <p>Big mascot centered on top, text below. Everything centered. Mascot dominates the viewport. Simple, bold, mobile-first.</p>
+    </div>
+  </div>
+
+  <div class="card" data-choice="c" onclick="toggleSelect(this)">
+    <div class="card-image" style="background: linear-gradient(135deg, #f0f4ff, #e8eeff); padding: 24px; text-align: center; min-height: 220px; display: flex; flex-direction: column; align-items: center; justify-content: center; position: relative;">
+      <div style="position: absolute; top: 12px; left: 20px; width: 60px; height: 60px; background: linear-gradient(135deg, #c7d2fe, #dbeafe); border-radius: 16px; display: flex; align-items: center; justify-content: center; font-size: 28px; transform: rotate(-8deg);">🧠</div>
+      <div style="position: absolute; top: 40px; right: 20px; width: 50px; height: 50px; background: linear-gradient(135deg, #fde68a, #fbbf24); border-radius: 16px; display: flex; align-items: center; justify-content: center; font-size: 24px; transform: rotate(5deg);">👑</div>
+      <div style="position: absolute; bottom: 40px; left: 30px; width: 45px; height: 45px; background: linear-gradient(135deg, #bbf7d0, #34d399); border-radius: 16px; display: flex; align-items: center; justify-content: center; font-size: 22px; transform: rotate(-3deg);">🔥</div>
+      <div style="font-size: 28px; font-weight: 900; color: #1a1a2e; line-height: 1.2; z-index: 1;">How Old Is<br>Your Brain?</div>
+      <div style="font-size: 13px; color: #6b6b6b; margin-top: 8px; z-index: 1;">8 brain games. Free brain age test.</div>
+      <div style="margin-top: 14px; background: #1a1a2e; padding: 8px 20px; border-radius: 10px; color: white; font-weight: 700; font-size: 13px; display: inline-block; z-index: 1;">Download Free</div>
+      <div style="font-size: 10px; color: #9a9a9a; margin-top: 8px;">← multiple mascot states floating around text</div>
+    </div>
+    <div class="card-body">
+      <h3>C. Mascot Constellation</h3>
+      <p>Multiple mascot states (wave, crown, fire, cool) floating around the hero text at different angles. Playful, dynamic, shows personality range.</p>
+    </div>
+  </div>
+</div>

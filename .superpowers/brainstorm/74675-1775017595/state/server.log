@@ -1,0 +1,4 @@
+{"type":"server-started","port":56879,"host":"127.0.0.1","url_host":"localhost","url":"http://localhost:56879","screen_dir":"/Users/dylanmiller/Desktop/memori-website/.superpowers/brainstorm/74675-1775017595/content","state_dir":"/Users/dylanmiller/Desktop/memori-website/.superpowers/brainstorm/74675-1775017595/state"}
+{"type":"screen-added","file":"/Users/dylanmiller/Desktop/memori-website/.superpowers/brainstorm/74675-1775017595/content/design-direction.html"}
+{"type":"screen-added","file":"/Users/dylanmiller/Desktop/memori-website/.superpowers/brainstorm/74675-1775017595/content/hero-layout.html"}
+{"type":"server-stopped","reason":"idle timeout"}

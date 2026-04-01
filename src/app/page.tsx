@@ -1,382 +1,401 @@
 import Link from "next/link";
+import Image from "next/image";
 
-/* ─── Game Card ─── */
-function GameCard({ icon, title, desc, color, delay }: {
-  icon: string; title: string; desc: string; color: string; delay: string;
-}) {
+/* ─── Phone Mockup (devices.css iPhone 14 Pro) ─── */
+function PhoneMockup({ src, alt, className = "", scale = 0.55 }: { src: string; alt: string; className?: string; scale?: number }) {
   return (
-    <div className="card p-5 animate-slide-up" style={{ animationDelay: delay, opacity: 0 }}>
-      <div
-        className="mb-3 flex h-11 w-11 items-center justify-center rounded-xl text-xl"
-        style={{ background: `${color}15` }}
-      >
-        {icon}
-      </div>
-      <h3 className="mb-1 text-sm font-bold text-text-primary">{title}</h3>
-      <p className="text-xs leading-relaxed text-text-secondary">{desc}</p>
-    </div>
-  );
-}
-
-/* ─── Score Ring ─── */
-function ScoreRing() {
-  const score = 748;
-  const progress = score / 1000;
-  const circumference = 2 * Math.PI * 68;
-  const strokeDashoffset = circumference * (1 - progress);
-
-  return (
-    <div className="relative animate-float">
-      <div className="card animate-pulse-glow relative overflow-hidden p-8 text-center">
-        <div className="absolute inset-0 bg-gradient-to-br from-accent/[0.03] to-transparent" />
-
-        <div className="relative">
-          <svg width="160" height="160" viewBox="0 0 160 160" className="mx-auto">
-            <circle cx="80" cy="80" r="68" fill="none" stroke="rgba(0,0,0,0.05)" strokeWidth="12" />
-            <circle
-              cx="80" cy="80" r="68" fill="none"
-              stroke="url(#scoreGrad)" strokeWidth="12" strokeLinecap="round"
-              strokeDasharray={circumference}
-              strokeDashoffset={strokeDashoffset}
-              transform="rotate(-90 80 80)"
-            />
-            <defs>
-              <linearGradient id="scoreGrad" x1="0%" y1="0%" x2="100%" y2="100%">
-                <stop offset="0%" stopColor="#3885F5" />
-                <stop offset="100%" stopColor="#00D19E" />
-              </linearGradient>
-            </defs>
-          </svg>
-
-          <div className="absolute inset-0 flex flex-col items-center justify-center">
-            <span className="text-[42px] font-black tracking-tight text-text-primary">{score}</span>
-            <span className="text-[10px] font-bold uppercase tracking-[2px] text-text-tertiary">Brain Score</span>
-          </div>
+    <div className={`${className}`} style={{ transform: `scale(${scale})`, transformOrigin: "top center" }}>
+      <div className="device device-iphone-14-pro device-black">
+        <div className="device-frame">
+          <Image
+            src={src}
+            alt={alt}
+            width={390}
+            height={830}
+            className="device-screen"
+            style={{ objectFit: "cover" }}
+            priority
+          />
         </div>
-
-        <div className="relative mt-5 flex items-center justify-center gap-3">
-          <span className="rounded-full bg-surface-2 px-3 py-1.5 text-xs font-bold text-text-secondary">
-            Brain Age: <span className="text-accent">24</span>
-          </span>
-          <span className="rounded-full bg-accent/10 px-3 py-1.5 text-xs font-bold text-accent">
-            Top 6%
-          </span>
-        </div>
+        <div className="device-stripe"></div>
+        <div className="device-header"></div>
+        <div className="device-sensors"></div>
+        <div className="device-btns"></div>
+        <div className="device-power"></div>
+        <div className="device-home"></div>
       </div>
-    </div>
-  );
-}
-
-/* ─── Step ─── */
-function Step({ num, title, desc, delay }: {
-  num: string; title: string; desc: string; delay: string;
-}) {
-  return (
-    <div className="card relative p-7 text-center animate-slide-up" style={{ animationDelay: delay, opacity: 0 }}>
-      <div className="mx-auto mb-4 flex h-10 w-10 items-center justify-center rounded-full bg-accent/10 text-sm font-black text-accent">
-        {num}
-      </div>
-      <h3 className="mb-2 text-base font-bold">{title}</h3>
-      <p className="text-sm leading-relaxed text-text-secondary">{desc}</p>
     </div>
   );
 }
 
 /* ─── Feature Row ─── */
-function FeatureRow({ icon, title, desc }: { icon: string; title: string; desc: string }) {
+function Feature({ icon, title, desc }: { icon: string; title: string; desc: string }) {
   return (
     <div className="flex items-start gap-4">
-      <div className="flex h-10 w-10 flex-shrink-0 items-center justify-center rounded-xl bg-accent/8 text-lg">
+      <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-2xl bg-accent/10 text-2xl">
         {icon}
       </div>
       <div>
-        <h3 className="mb-1 text-sm font-bold text-text-primary">{title}</h3>
-        <p className="text-sm text-text-secondary">{desc}</p>
+        <h3 className="text-base font-bold text-text-primary">{title}</h3>
+        <p className="text-sm text-text-secondary mt-1">{desc}</p>
       </div>
     </div>
   );
 }
 
-/* ═══════════════════════════════════════════ */
+/* ─── Game Card ─── */
+function GameCard({ icon, title, category, color, delay }: {
+  icon: string; title: string; category: string; color: string; delay: string;
+}) {
+  return (
+    <div
+      className="card p-5 animate-slide-up text-center"
+      style={{ animationDelay: delay, opacity: 0 }}
+    >
+      <div
+        className="mb-3 mx-auto flex h-14 w-14 items-center justify-center rounded-2xl text-2xl"
+        style={{ background: `${color}18` }}
+      >
+        {icon}
+      </div>
+      <h3 className="text-sm font-bold text-text-primary">{title}</h3>
+      <p className="text-xs text-text-tertiary mt-1">{category}</p>
+    </div>
+  );
+}
+
+/* ─── Step Card ─── */
+function StepCard({ num, title, desc }: { num: string; title: string; desc: string }) {
+  return (
+    <div className="card p-6 text-center">
+      <div className="mx-auto mb-3 flex h-10 w-10 items-center justify-center rounded-full bg-accent text-white font-bold text-lg">
+        {num}
+      </div>
+      <h3 className="text-base font-bold text-text-primary mb-1">{title}</h3>
+      <p className="text-sm text-text-secondary">{desc}</p>
+    </div>
+  );
+}
 
 export default function Home() {
   return (
-    <div className="relative min-h-screen">
-
-      {/* ─── Nav ─── */}
-      <nav className="fixed top-0 z-50 w-full border-b border-black/5 bg-page-bg/80 backdrop-blur-xl">
-        <div className="mx-auto flex h-14 max-w-6xl items-center justify-between px-6">
-          <Link href="/" className="flex items-center gap-2.5">
-            <img src="/app-icon.png" alt="Memori" className="h-7 w-7 rounded-lg" />
-            <span className="text-base font-bold text-text-primary">Memori</span>
-          </Link>
-          <div className="flex items-center gap-2">
-            <Link href="/privacy" className="hidden rounded-lg px-3 py-1.5 text-sm font-medium text-text-secondary transition-colors hover:text-text-primary sm:block">
-              Privacy
-            </Link>
-            <Link href="/support" className="hidden rounded-lg px-3 py-1.5 text-sm font-medium text-text-secondary transition-colors hover:text-text-primary sm:block">
-              Support
-            </Link>
-            <a href="#download" className="btn-primary px-5 py-2 text-sm">
-              Download
-            </a>
+    <div className="min-h-screen">
+      {/* ─── Navbar ─── */}
+      <nav className="fixed top-0 w-full z-50 bg-page-bg/80 backdrop-blur-xl border-b border-card-border">
+        <div className="mx-auto max-w-6xl flex items-center justify-between px-6 py-3">
+          <div className="flex items-center gap-2.5">
+            <Image src="/app-icon.png" alt="Memori" width={36} height={36} className="rounded-xl" />
+            <span className="text-lg font-extrabold text-text-primary">Memori</span>
           </div>
+          <div className="hidden sm:flex items-center gap-6 text-sm font-medium text-text-secondary">
+            <Link href="#games" className="hover:text-accent transition-colors">Games</Link>
+            <Link href="#features" className="hover:text-accent transition-colors">Features</Link>
+            <Link href="/support" className="hover:text-accent transition-colors">Support</Link>
+          </div>
+          <a
+            href="https://apps.apple.com/app/id6760178716"
+            className="btn-primary !py-2.5 !px-5 !text-sm !rounded-xl"
+          >
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M18.71 19.5C17.88 20.74 17 21.95 15.66 21.97C14.32 21.99 13.89 21.18 12.37 21.18C10.84 21.18 10.37 21.95 9.1 21.99C7.79 22.03 6.8 20.68 5.96 19.47C4.25 16.97 2.94 12.45 4.7 9.39C5.57 7.87 7.13 6.91 8.82 6.89C10.1 6.87 11.32 7.75 12.11 7.75C12.89 7.75 14.37 6.68 15.92 6.84C16.57 6.87 18.39 7.1 19.56 8.82C19.47 8.88 17.39 10.1 17.41 12.63C17.44 15.65 20.06 16.66 20.09 16.67C20.06 16.74 19.67 18.11 18.71 19.5ZM13 3.5C13.73 2.67 14.94 2.04 15.94 2C16.07 3.17 15.6 4.35 14.9 5.19C14.21 6.04 13.07 6.7 11.95 6.61C11.8 5.46 12.36 4.26 13 3.5Z"/></svg>
+            Download
+          </a>
         </div>
       </nav>
 
       {/* ─── Hero ─── */}
-      <section className="relative overflow-hidden pt-28 pb-16 md:pt-36 md:pb-24">
-        <div className="glow-orb h-[400px] w-[400px] bg-accent/8 top-[-10%] left-[-10%]" />
-        <div className="glow-orb h-[300px] w-[300px] bg-violet/6 top-[20%] right-[-5%]" />
-        <div className="glow-orb h-[200px] w-[200px] bg-teal/5 bottom-[0%] left-[30%]" />
+      <section className="relative pt-28 pb-16 overflow-hidden">
+        {/* Background glow orbs */}
+        <div className="glow-orb bg-accent/20 w-[400px] h-[400px] -top-40 -left-40" />
+        <div className="glow-orb bg-violet/15 w-[300px] h-[300px] top-20 -right-20" />
+        <div className="glow-orb bg-teal/10 w-[250px] h-[250px] bottom-0 left-1/3" />
 
-        <div className="relative z-10 mx-auto max-w-6xl px-6">
-          <div className="flex flex-col items-center gap-12 lg:flex-row lg:items-center lg:justify-between">
-            <div className="max-w-xl text-center lg:text-left">
-              <div className="animate-fade-in mb-5 inline-flex items-center gap-2 rounded-full border border-accent/15 bg-accent/5 px-4 py-1.5">
-                <span className="text-xs font-bold text-accent">Science-backed brain training</span>
-              </div>
+        <div className="relative mx-auto max-w-6xl px-6">
+          <div className="text-center relative">
+            {/* Floating mascots */}
+            <div className="relative inline-block">
+              {/* Top left - wave */}
+              <Image
+                src="/mascots/mascot-wave.png" alt="Memori waving" width={80} height={80}
+                className="absolute -top-4 -left-24 animate-float hidden md:block"
+                style={{ animationDelay: "0s" }}
+              />
+              {/* Top right - crown */}
+              <Image
+                src="/mascots/mascot-crown.png" alt="Memori champion" width={70} height={70}
+                className="absolute -top-8 -right-20 animate-float hidden md:block"
+                style={{ animationDelay: "1s", animationDuration: "5s" }}
+              />
+              {/* Bottom left - fire */}
+              <Image
+                src="/mascots/mascot-streak-fire.png" alt="Memori on fire" width={65} height={65}
+                className="absolute -bottom-6 -left-16 animate-float hidden md:block"
+                style={{ animationDelay: "0.5s", animationDuration: "4.5s" }}
+              />
+              {/* Bottom right - cool */}
+              <Image
+                src="/mascots/mascot-cool.png" alt="Memori cool" width={68} height={68}
+                className="absolute -bottom-4 -right-16 animate-float hidden md:block"
+                style={{ animationDelay: "1.5s", animationDuration: "5.5s" }}
+              />
 
-              <h1 className="animate-slide-up delay-1 mb-5 text-[44px] font-black leading-[1.05] tracking-tight md:text-[56px] lg:text-[64px]">
-                What&apos;s your{" "}
-                <span className="gradient-text">Brain Age</span>?
+              {/* Main headline */}
+              <h1 className="text-5xl sm:text-6xl lg:text-7xl font-black tracking-tight text-text-primary animate-slide-up">
+                How Old Is<br />
+                <span className="gradient-text">Your Brain?</span>
               </h1>
-
-              <p className="animate-slide-up delay-2 mb-8 text-lg leading-relaxed text-text-secondary md:text-xl">
-                Take a 2-minute assessment. Discover your Brain Score, Brain Age, and Brain Type.
-                Train with 8 cognitive games. <span className="font-bold text-text-primary">Get sharper every day.</span>
-              </p>
-
-              <div className="animate-slide-up delay-3 flex flex-col items-center gap-3 sm:flex-row lg:justify-start">
-                <a href="#download" className="btn-primary w-full sm:w-auto">
-                  <svg className="h-5 w-5" viewBox="0 0 24 24" fill="currentColor">
-                    <path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.8-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M13 3.5c.73-.83 1.94-1.46 2.94-1.5.13 1.17-.34 2.35-1.04 3.19-.69.85-1.83 1.51-2.95 1.42-.15-1.15.41-2.35 1.05-3.11Z" />
-                  </svg>
-                  Download Free
-                </a>
-                <a href="#how" className="btn-secondary w-full sm:w-auto">
-                  How it works
-                </a>
-              </div>
             </div>
 
-            <div className="w-72 flex-shrink-0">
-              <ScoreRing />
+            <p className="mt-5 text-lg text-text-secondary max-w-md mx-auto animate-slide-up delay-1">
+              8 brain games. 2-minute brain age test. Track your cognitive score. Compete globally.
+            </p>
+
+            <div className="mt-8 flex flex-col sm:flex-row items-center justify-center gap-3 animate-slide-up delay-2">
+              <a href="https://apps.apple.com/app/id6760178716" className="btn-primary">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M18.71 19.5C17.88 20.74 17 21.95 15.66 21.97C14.32 21.99 13.89 21.18 12.37 21.18C10.84 21.18 10.37 21.95 9.1 21.99C7.79 22.03 6.8 20.68 5.96 19.47C4.25 16.97 2.94 12.45 4.7 9.39C5.57 7.87 7.13 6.91 8.82 6.89C10.1 6.87 11.32 7.75 12.11 7.75C12.89 7.75 14.37 6.68 15.92 6.84C16.57 6.87 18.39 7.1 19.56 8.82C19.47 8.88 17.39 10.1 17.41 12.63C17.44 15.65 20.06 16.66 20.09 16.67C20.06 16.74 19.67 18.11 18.71 19.5ZM13 3.5C13.73 2.67 14.94 2.04 15.94 2C16.07 3.17 15.6 4.35 14.9 5.19C14.21 6.04 13.07 6.7 11.95 6.61C11.8 5.46 12.36 4.26 13 3.5Z"/></svg>
+                Download Free on iOS
+              </a>
+              <a href="#games" className="btn-secondary">
+                See All Games ↓
+              </a>
+            </div>
+
+            {/* Stats */}
+            <div className="mt-10 flex items-center justify-center gap-8 text-center animate-slide-up delay-3">
+              <div>
+                <div className="text-2xl font-extrabold text-text-primary">8</div>
+                <div className="text-xs text-text-tertiary mt-0.5">Brain Games</div>
+              </div>
+              <div className="h-8 w-px bg-card-border" />
+              <div>
+                <div className="text-2xl font-extrabold text-text-primary">2 min</div>
+                <div className="text-xs text-text-tertiary mt-0.5">Brain Age Test</div>
+              </div>
+              <div className="h-8 w-px bg-card-border" />
+              <div>
+                <div className="text-2xl font-extrabold text-text-primary">100%</div>
+                <div className="text-xs text-text-tertiary mt-0.5">Private</div>
+              </div>
             </div>
           </div>
-        </div>
-      </section>
 
-      {/* ─── Stats ─── */}
-      <section className="relative z-10 px-6 pb-16">
-        <div className="mx-auto grid max-w-3xl grid-cols-2 gap-3 md:grid-cols-4">
-          {[
-            { value: "8", label: "Cognitive Games" },
-            { value: "2min", label: "Assessment" },
-            { value: "30+", label: "Achievements" },
-            { value: "100%", label: "Private" },
-          ].map((stat, i) => (
-            <div key={stat.label} className="card animate-slide-up px-4 py-4 text-center" style={{ animationDelay: `${0.1 + i * 0.08}s`, opacity: 0 }}>
-              <p className="text-xl font-black text-text-primary">{stat.value}</p>
-              <p className="text-xs font-medium text-text-secondary">{stat.label}</p>
+          {/* Phone mockups row */}
+          <div className="mt-14 flex items-start justify-center gap-0 sm:gap-2">
+            <div className="hidden sm:block opacity-75 -mr-4" style={{ marginTop: "40px" }}>
+              <PhoneMockup src="/screenshots/train.png" alt="Train tab showing 8 brain games" scale={0.48} />
             </div>
-          ))}
+            <div className="z-10">
+              <PhoneMockup src="/screenshots/home.png" alt="Home screen with brain score and mascot" scale={0.55} />
+            </div>
+            <div className="hidden sm:block opacity-75 -ml-4" style={{ marginTop: "40px" }}>
+              <PhoneMockup src="/screenshots/insights.png" alt="Brain score insights and history" scale={0.48} />
+            </div>
+          </div>
         </div>
       </section>
 
       {/* ─── Games ─── */}
-      <section className="relative py-20 px-6">
-        <div className="glow-orb h-[300px] w-[300px] bg-violet/5 top-[10%] right-[-5%]" />
-
-        <div className="relative mx-auto max-w-6xl">
-          <div className="mb-12 text-center">
-            <h2 className="mb-3 text-3xl font-black md:text-4xl">
-              8 Science-Backed <span className="gradient-text">Games</span>
+      <section id="games" className="py-20 relative">
+        <div className="glow-orb bg-accent/10 w-[300px] h-[300px] top-0 right-0" />
+        <div className="mx-auto max-w-5xl px-6">
+          <div className="text-center mb-12">
+            <h2 className="text-3xl sm:text-4xl font-black text-text-primary">
+              8 Brain Games
             </h2>
-            <p className="mx-auto max-w-lg text-base text-text-secondary">
-              Every exercise is rooted in peer-reviewed cognitive psychology research. Not random puzzles — proven techniques.
+            <p className="mt-3 text-text-secondary max-w-md mx-auto">
+              Each game targets a different cognitive skill. Play daily to track your improvement.
             </p>
           </div>
 
-          <div className="grid gap-3 sm:grid-cols-2 lg:grid-cols-4">
-            <GameCard icon="⚡" title="Reaction Time" desc="Test and improve your processing speed" color="#FA6B59" delay="0.1s" />
-            <GameCard icon="🎨" title="Color Match" desc="Build attention and inhibitory control" color="#9457EB" delay="0.15s" />
-            <GameCard icon="🔄" title="Speed Match" desc="Train rapid visual recognition" color="#409CFB" delay="0.2s" />
-            <GameCard icon="👁️" title="Visual Memory" desc="Strengthen spatial working memory" color="#5957D6" delay="0.25s" />
-            <GameCard icon="🔢" title="Number Memory" desc="Expand your digit span capacity" color="#00D19E" delay="0.3s" />
-            <GameCard icon="🧮" title="Math Speed" desc="Sharpen mental arithmetic under pressure" color="#F5A623" delay="0.35s" />
-            <GameCard icon="🧠" title="Dual N-Back" desc="The gold standard in working memory training" color="#3885F5" delay="0.4s" />
-            <GameCard icon="🧩" title="Chunking" desc="Master memory techniques used by champions" color="#FF6B8A" delay="0.45s" />
+          <div className="grid grid-cols-2 sm:grid-cols-4 gap-3 sm:gap-4">
+            <GameCard icon="⚡" title="Reaction Time" category="Speed" color="#FA6B59" delay="0s" />
+            <GameCard icon="🎨" title="Color Match" category="Attention" color="#9457EB" delay="0.05s" />
+            <GameCard icon="⭐" title="Speed Match" category="Speed" color="#409CFB" delay="0.1s" />
+            <GameCard icon="🟪" title="Visual Memory" category="Memory" color="#5957D6" delay="0.15s" />
+            <GameCard icon="🔢" title="Number Memory" category="Memory" color="#00D19E" delay="0.2s" />
+            <GameCard icon="🧮" title="Math Speed" category="Problem Solving" color="#F5A623" delay="0.25s" />
+            <GameCard icon="🧩" title="Dual N-Back" category="Focus" color="#3885F5" delay="0.3s" />
+            <GameCard icon="🔗" title="Chunking" category="Memory" color="#FF6B8A" delay="0.35s" />
+          </div>
+        </div>
+      </section>
+
+      {/* ─── Brain Score Section ─── */}
+      <section className="py-20 bg-surface-2/50">
+        <div className="mx-auto max-w-6xl px-6">
+          <div className="grid md:grid-cols-2 gap-12 items-center">
+            <div>
+              <h2 className="text-3xl sm:text-4xl font-black text-text-primary">
+                Your Brain Has a Score.{" "}
+                <span className="gradient-text">Do You Know Yours?</span>
+              </h2>
+              <p className="mt-4 text-text-secondary text-lg leading-relaxed">
+                Take a 2-minute assessment and get your Brain Age. Track Memory, Speed, and Visual
+                scores over time. Watch your mascot evolve as you train.
+              </p>
+              <div className="mt-8 space-y-4">
+                <Feature icon="🧠" title="Brain Score out of 1000" desc="Combined metric across all cognitive domains" />
+                <Feature icon="📊" title="Track your progress" desc="See your score history and domain breakdowns" />
+                <Feature icon="🏆" title="Compete globally" desc="Rank on leaderboards against other players" />
+              </div>
+            </div>
+            <div className="flex justify-center">
+              <PhoneMockup src="/screenshots/compete.png" alt="Global leaderboard rankings" />
+            </div>
           </div>
         </div>
       </section>
 
       {/* ─── How It Works ─── */}
-      <section id="how" className="relative overflow-hidden py-20 px-6">
-        <div className="absolute inset-0 bg-gradient-to-b from-page-bg via-surface-2/50 to-page-bg" />
-        <div className="glow-orb h-[300px] w-[300px] bg-accent/5 bottom-[0%] left-[-5%]" />
-
-        <div className="relative mx-auto max-w-4xl">
-          <div className="mb-12 text-center">
-            <h2 className="mb-3 text-3xl font-black md:text-4xl">
-              How It <span className="gradient-text">Works</span>
+      <section id="features" className="py-20">
+        <div className="mx-auto max-w-4xl px-6">
+          <div className="text-center mb-12">
+            <h2 className="text-3xl sm:text-4xl font-black text-text-primary">
+              How It Works
             </h2>
           </div>
-
-          <div className="grid gap-4 md:grid-cols-3">
-            <Step num="1" title="Take the Assessment" desc="3 quick tests — digit span, reaction time, visual memory. Only 2 minutes." delay="0.1s" />
-            <Step num="2" title="Get Your Brain Score" desc="See your Brain Score, Brain Age, and Brain Type. Share with friends." delay="0.2s" />
-            <Step num="3" title="Train Daily" desc="Adaptive exercises keep you improving. Compete on global leaderboards." delay="0.3s" />
+          <div className="grid sm:grid-cols-3 gap-4">
+            <StepCard num="1" title="Take the Test" desc="2-minute brain age assessment. Find out how old your brain really is." />
+            <StepCard num="2" title="Train Daily" desc="Play 3 brain games per day. Your mascot reacts to your performance." />
+            <StepCard num="3" title="Track & Compete" desc="Watch your Brain Score improve. Climb the global leaderboards." />
           </div>
         </div>
       </section>
 
-      {/* ─── Features ─── */}
-      <section className="relative py-20 px-6">
-        <div className="relative mx-auto max-w-4xl">
-          <div className="mb-12 text-center">
-            <h2 className="mb-3 text-3xl font-black md:text-4xl">
-              Everything You <span className="gradient-text">Need</span>
-            </h2>
-          </div>
-
-          <div className="grid gap-6 sm:grid-cols-2">
-            <FeatureRow icon="📊" title="Adaptive Difficulty" desc="Stays in the optimal learning zone based on the 85% Rule (Wilson et al. 2019)" />
-            <FeatureRow icon="🏆" title="Game Center Leaderboards" desc="Compete globally on Brain Score, per-game rankings, and more" />
-            <FeatureRow icon="🔥" title="Streaks & Daily Challenges" desc="Same challenge for every player, every day. Keep your streak alive" />
-            <FeatureRow icon="🏅" title="30+ Achievements" desc="Unlock badges for milestones, perfect scores, and personal bests" />
-            <FeatureRow icon="📈" title="Progress Insights" desc="Performance charts, heatmap calendar, and personal records" />
-            <FeatureRow icon="🔒" title="100% Private" desc="All data stays on your device. No accounts, no tracking, no cloud" />
-          </div>
-        </div>
-      </section>
-
-      {/* ─── Challenge ─── */}
-      <section className="py-20 px-6">
-        <div className="mx-auto max-w-3xl">
-          <div className="card relative overflow-hidden p-10 text-center md:p-14">
-            <div className="absolute inset-0 bg-gradient-to-br from-accent/[0.03] via-transparent to-violet/[0.03]" />
-
-            <div className="relative">
-              <h2 className="mb-3 text-3xl font-black md:text-4xl">
-                Challenge Your Friends
-              </h2>
-              <p className="mx-auto mb-8 max-w-md text-base text-text-secondary">
-                Share your Brain Score on social media. See who has the sharpest mind in your friend group.
-              </p>
-
-              <div className="mb-8 flex items-center justify-center gap-3">
-                <div className="-rotate-3 rounded-2xl bg-gradient-to-br from-accent to-accent-light p-5 text-white shadow-lg shadow-accent/15">
-                  <p className="text-[10px] font-bold uppercase tracking-widest opacity-60">Brain Score</p>
-                  <p className="text-3xl font-black">748</p>
-                  <p className="mt-1 text-[10px] font-bold opacity-80">Brain Age: 24</p>
-                </div>
-                <div className="rotate-2 rounded-2xl bg-gradient-to-br from-violet to-indigo p-5 text-white shadow-lg shadow-violet/15">
-                  <p className="text-[10px] font-bold uppercase tracking-widest opacity-60">Your Turn</p>
-                  <p className="text-3xl font-black">???</p>
-                  <p className="mt-1 text-[10px] font-bold opacity-80">Can you beat me?</p>
-                </div>
+      {/* ─── Mascot Section ─── */}
+      <section className="py-20 bg-surface-2/50 relative overflow-hidden">
+        <div className="glow-orb bg-violet/10 w-[350px] h-[350px] -bottom-20 -left-20" />
+        <div className="mx-auto max-w-6xl px-6">
+          <div className="grid md:grid-cols-2 gap-12 items-center">
+            <div className="flex justify-center order-2 md:order-1">
+              <div className="grid grid-cols-3 gap-3 max-w-xs">
+                {[
+                  { src: "/mascots/mascot-crown.png", label: "900+" },
+                  { src: "/mascots/mascot-cool.png", label: "800+" },
+                  { src: "/mascots/mascot-celebrate.png", label: "700+" },
+                  { src: "/mascots/mascot-wave.png", label: "600+" },
+                  { src: "/mascots/mascot-thinking.png", label: "500+" },
+                  { src: "/mascots/mascot-bored.png", label: "400+" },
+                  { src: "/mascots/mascot-working-out.png", label: "300+" },
+                  { src: "/mascots/mascot-streak-fire.png", label: "Streak" },
+                  { src: "/mascots/mascot-locked-sad.png", label: "Locked" },
+                ].map((m, i) => (
+                  <div key={i} className="card p-3 text-center hover:scale-105 transition-transform">
+                    <Image src={m.src} alt={m.label} width={80} height={80} className="mx-auto" />
+                    <div className="text-[10px] font-bold text-text-tertiary mt-1">{m.label}</div>
+                  </div>
+                ))}
               </div>
-
-              <a href="#download" className="btn-primary">
-                Accept the Challenge
-              </a>
+            </div>
+            <div className="order-1 md:order-2">
+              <h2 className="text-3xl sm:text-4xl font-black text-text-primary">
+                Meet Your Brain&apos;s{" "}
+                <span className="gradient-text">Mascot</span>
+              </h2>
+              <p className="mt-4 text-text-secondary text-lg leading-relaxed">
+                Your mascot reflects your brain health. Train daily and watch it thrive —
+                skip a day and it gets sad. 9 different states based on your Brain Score.
+              </p>
+              <p className="mt-3 text-text-secondary">
+                From crowned champion to couch potato — your mascot tells the story of your cognitive journey.
+              </p>
             </div>
           </div>
         </div>
       </section>
 
       {/* ─── Pricing ─── */}
-      <section className="py-20 px-6">
-        <div className="absolute inset-0 bg-gradient-to-b from-page-bg via-surface-2/30 to-page-bg" />
-        <div className="relative mx-auto max-w-3xl">
-          <div className="mb-12 text-center">
-            <h2 className="mb-3 text-3xl font-black md:text-4xl">
-              Free to <span className="gradient-text">Start</span>
+      <section className="py-20">
+        <div className="mx-auto max-w-3xl px-6">
+          <div className="text-center mb-12">
+            <h2 className="text-3xl sm:text-4xl font-black text-text-primary">
+              Free to Play. Pro to Dominate.
             </h2>
-            <p className="text-base text-text-secondary">All 8 games are always available. Pro unlocks unlimited training.</p>
+            <p className="mt-3 text-text-secondary">
+              Most features are free. Go Pro for unlimited games and full analytics.
+            </p>
           </div>
 
-          <div className="grid gap-4 md:grid-cols-2">
-            <div className="card p-7">
-              <h3 className="mb-1 text-lg font-bold">Free</h3>
-              <p className="mb-5 text-sm text-text-secondary">Everything you need to get started</p>
-              <ul className="space-y-2.5 text-sm text-text-secondary">
-                <li className="flex items-center gap-2"><span className="text-teal font-bold">✓</span> All 8 cognitive games</li>
-                <li className="flex items-center gap-2"><span className="text-teal font-bold">✓</span> Brain Score assessment</li>
-                <li className="flex items-center gap-2"><span className="text-teal font-bold">✓</span> 3 sessions per day</li>
-                <li className="flex items-center gap-2"><span className="text-teal font-bold">✓</span> Streak tracking</li>
-                <li className="flex items-center gap-2"><span className="text-teal font-bold">✓</span> Leaderboards</li>
+          <div className="grid sm:grid-cols-2 gap-4">
+            {/* Free */}
+            <div className="card p-6">
+              <div className="text-sm font-bold text-teal mb-1">FREE</div>
+              <div className="text-3xl font-black text-text-primary">$0</div>
+              <div className="text-sm text-text-tertiary mb-6">Forever</div>
+              <ul className="space-y-3 text-sm text-text-secondary">
+                {["3 games per day", "Brain Age assessment", "Brain Score tracking", "All 8 games", "Global leaderboards", "Mascot system"].map((f, i) => (
+                  <li key={i} className="flex items-center gap-2">
+                    <span className="text-teal">✓</span> {f}
+                  </li>
+                ))}
               </ul>
             </div>
 
-            <div className="card relative overflow-hidden p-7" style={{ borderColor: "rgba(56, 133, 245, 0.15)" }}>
-              <div className="absolute inset-0 bg-gradient-to-br from-accent/[0.03] to-transparent" />
-              <div className="relative">
-                <div className="mb-1 flex items-center gap-2">
-                  <h3 className="text-lg font-bold">Pro</h3>
-                  <span className="rounded-full bg-accent/10 px-2 py-0.5 text-[10px] font-bold text-accent">POPULAR</span>
-                </div>
-                <p className="mb-5 text-sm text-text-secondary">$3.99/mo or $19.99/yr <span className="text-teal font-bold">(save 58%)</span></p>
-                <ul className="space-y-2.5 text-sm text-text-secondary">
-                  <li className="flex items-center gap-2"><span className="text-accent font-bold">✓</span> <span className="text-text-primary font-medium">Unlimited training</span></li>
-                  <li className="flex items-center gap-2"><span className="text-accent font-bold">✓</span> Everything in Free</li>
-                  <li className="flex items-center gap-2"><span className="text-accent font-bold">✓</span> Detailed analytics</li>
-                  <li className="flex items-center gap-2"><span className="text-accent font-bold">✓</span> All future games & features</li>
-                  <li className="flex items-center gap-2"><span className="text-accent font-bold">✓</span> Support development</li>
-                </ul>
+            {/* Pro */}
+            <div className="card p-6 border-2 !border-accent/30 relative">
+              <div className="absolute -top-3 left-6 bg-accent text-white text-xs font-bold px-3 py-1 rounded-full">
+                BEST VALUE
               </div>
+              <div className="text-sm font-bold text-accent mb-1">PRO</div>
+              <div className="text-3xl font-black text-text-primary">$1.67<span className="text-base font-medium text-text-tertiary">/mo</span></div>
+              <div className="text-sm text-text-tertiary mb-6">$19.99/year · 3-day free trial</div>
+              <ul className="space-y-3 text-sm text-text-secondary">
+                {["Unlimited daily games", "Full score history", "Domain analytics", "Priority leaderboards", "All free features", "Support development"].map((f, i) => (
+                  <li key={i} className="flex items-center gap-2">
+                    <span className="text-accent">✓</span> {f}
+                  </li>
+                ))}
+              </ul>
             </div>
+          </div>
+
+          {/* Referral callout */}
+          <div className="mt-6 card p-5 bg-accent/5 border-accent/20 text-center">
+            <p className="text-sm font-bold text-text-primary">
+              🎁 Don&apos;t want to pay? <span className="text-accent">Invite a friend</span> and you both get 1 week of Pro free!
+            </p>
           </div>
         </div>
       </section>
 
-      {/* ─── CTA ─── */}
-      <section id="download" className="relative overflow-hidden py-24 px-6">
-        <div className="glow-orb h-[400px] w-[400px] bg-accent/6 top-[20%] left-[30%]" />
-
-        <div className="relative mx-auto max-w-3xl text-center">
-          <h2 className="mb-4 text-4xl font-black md:text-5xl">
-            Ready to train<br />your <span className="gradient-text">brain</span>?
+      {/* ─── Final CTA ─── */}
+      <section className="py-20 relative overflow-hidden">
+        <div className="glow-orb bg-accent/15 w-[400px] h-[400px] top-0 left-1/2 -translate-x-1/2" />
+        <div className="relative mx-auto max-w-2xl px-6 text-center">
+          <Image
+            src="/mascots/mascot-celebrate.png" alt="Memori celebrating" width={120} height={120}
+            className="mx-auto mb-6 animate-float"
+          />
+          <h2 className="text-3xl sm:text-4xl font-black text-text-primary">
+            Ready to Test Your Brain?
           </h2>
-          <p className="mb-10 text-lg text-text-secondary">
-            Download free. Take the assessment. See where you stand.
+          <p className="mt-3 text-text-secondary text-lg">
+            Download Memori and find out your Brain Age in 2 minutes. Free forever.
           </p>
-
-          <a href="https://apps.apple.com" className="btn-primary text-lg px-8 py-4">
-            <svg className="h-6 w-6" viewBox="0 0 24 24" fill="currentColor">
-              <path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.8-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M13 3.5c.73-.83 1.94-1.46 2.94-1.5.13 1.17-.34 2.35-1.04 3.19-.69.85-1.83 1.51-2.95 1.42-.15-1.15.41-2.35 1.05-3.11Z" />
-            </svg>
-            Download on the App Store
+          <a href="https://apps.apple.com/app/id6760178716" className="btn-primary mt-8 inline-flex">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M18.71 19.5C17.88 20.74 17 21.95 15.66 21.97C14.32 21.99 13.89 21.18 12.37 21.18C10.84 21.18 10.37 21.95 9.1 21.99C7.79 22.03 6.8 20.68 5.96 19.47C4.25 16.97 2.94 12.45 4.7 9.39C5.57 7.87 7.13 6.91 8.82 6.89C10.1 6.87 11.32 7.75 12.11 7.75C12.89 7.75 14.37 6.68 15.92 6.84C16.57 6.87 18.39 7.1 19.56 8.82C19.47 8.88 17.39 10.1 17.41 12.63C17.44 15.65 20.06 16.66 20.09 16.67C20.06 16.74 19.67 18.11 18.71 19.5ZM13 3.5C13.73 2.67 14.94 2.04 15.94 2C16.07 3.17 15.6 4.35 14.9 5.19C14.21 6.04 13.07 6.7 11.95 6.61C11.8 5.46 12.36 4.26 13 3.5Z"/></svg>
+            Download Memori — It&apos;s Free
           </a>
-
-          <p className="mt-6 text-sm text-text-tertiary">Free to download · No account needed · Your data stays on your device</p>
         </div>
       </section>
 
       {/* ─── Footer ─── */}
-      <footer className="border-t border-black/5 py-10 px-6">
-        <div className="mx-auto flex max-w-6xl flex-col items-center gap-6 sm:flex-row sm:justify-between">
-          <div className="flex items-center gap-2">
-            <div className="flex h-6 w-6 items-center justify-center rounded-md bg-accent text-[10px] font-black text-white">M</div>
-            <span className="text-sm font-semibold text-text-secondary">Memori</span>
+      <footer className="border-t border-card-border py-10">
+        <div className="mx-auto max-w-6xl px-6">
+          <div className="flex flex-col sm:flex-row items-center justify-between gap-4">
+            <div className="flex items-center gap-2.5">
+              <Image src="/app-icon.png" alt="Memori" width={28} height={28} className="rounded-lg" />
+              <span className="text-sm font-bold text-text-primary">Memori</span>
+              <span className="text-xs text-text-tertiary">Brain Training Games</span>
+            </div>
+            <div className="flex items-center gap-6 text-sm text-text-secondary">
+              <Link href="/privacy" className="hover:text-accent transition-colors">Privacy</Link>
+              <Link href="/terms" className="hover:text-accent transition-colors">Terms</Link>
+              <Link href="/support" className="hover:text-accent transition-colors">Support</Link>
+            </div>
+            <div className="text-xs text-text-tertiary">
+              © {new Date().getFullYear()} Memori
+            </div>
           </div>
-
-          <div className="flex gap-6">
-            <Link href="/privacy" className="text-sm font-medium text-text-tertiary transition-colors hover:text-text-primary">
-              Privacy Policy
-            </Link>
-            <Link href="/terms" className="text-sm font-medium text-text-tertiary transition-colors hover:text-text-primary">
-              Terms of Use
-            </Link>
-            <Link href="/support" className="text-sm font-medium text-text-tertiary transition-colors hover:text-text-primary">
-              Support
-            </Link>
-          </div>
-
-          <p className="text-sm text-text-tertiary">
-            © {new Date().getFullYear()} Memori
-          </p>
         </div>
       </footer>
     </div>
