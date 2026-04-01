@@ -16,10 +16,13 @@ function ReferContent() {
     // Try to open the app via deep link
     window.location.href = deepLink;
 
-    // If app isn't installed, redirect to App Store after 1.5s
+    // If app isn't installed, redirect to App Store after 3s
     const timer = setTimeout(() => {
-      window.location.href = appStore;
-    }, 1500);
+      // Only redirect if page is still visible (app didn't open)
+      if (!document.hidden) {
+        window.location.href = appStore;
+      }
+    }, 3000);
 
     return () => clearTimeout(timer);
   }, [code]);
