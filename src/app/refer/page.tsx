@@ -8,8 +8,21 @@ function ReferContent() {
   const code = searchParams.get("code");
   const [showSteps, setShowSteps] = useState(false);
 
+  const [isInAppBrowser, setIsInAppBrowser] = useState(false);
+
   useEffect(() => {
     if (!code) return;
+
+    // Detect in-app browsers (TikTok, Instagram, Facebook, etc.)
+    const ua = navigator.userAgent || "";
+    const inApp = /FBAN|FBAV|Instagram|TikTok|BytedanceWebview|Line|Twitter|Snapchat/i.test(ua);
+    setIsInAppBrowser(inApp);
+
+    if (inApp) {
+      // In-app browsers block custom schemes, show manual steps immediately
+      setShowSteps(true);
+      return;
+    }
 
     const deepLink = `memori://refer?code=${code}`;
 
@@ -51,43 +64,88 @@ function ReferContent() {
 
       {showSteps ? (
         <div style={{ maxWidth: "340px" }}>
-          <div
-            style={{
-              background: "rgba(255,255,255,0.1)",
-              borderRadius: "16px",
-              padding: "24px",
-              marginBottom: "20px",
-              textAlign: "left",
-            }}
-          >
-            <p style={{ fontSize: "15px", fontWeight: 700, marginBottom: "16px" }}>
-              To claim your free week:
-            </p>
-            <p style={{ fontSize: "14px", opacity: 0.9, marginBottom: "12px" }}>
-              <strong>Step 1:</strong> Download Memori from the App Store
-            </p>
-            <p style={{ fontSize: "14px", opacity: 0.9, marginBottom: "12px" }}>
-              <strong>Step 2:</strong> Open this link again after installing
-            </p>
-            <p style={{ fontSize: "14px", opacity: 0.6 }}>
-              The link will activate your free Pro week automatically
-            </p>
-          </div>
-          <a
-            href="https://apps.apple.com/app/id6760178716"
-            style={{
-              display: "block",
-              background: "linear-gradient(135deg, #3885f5, #7c5ce0)",
-              color: "white",
-              padding: "16px 48px",
-              borderRadius: "16px",
-              fontSize: "18px",
-              fontWeight: 700,
-              textDecoration: "none",
-            }}
-          >
-            Download Memori
-          </a>
+          {isInAppBrowser ? (
+            <div
+              style={{
+                background: "rgba(255,255,255,0.1)",
+                borderRadius: "16px",
+                padding: "24px",
+                marginBottom: "20px",
+                textAlign: "left",
+              }}
+            >
+              <p style={{ fontSize: "15px", fontWeight: 700, marginBottom: "16px" }}>
+                Open in Safari to claim your free week:
+              </p>
+              <p style={{ fontSize: "14px", opacity: 0.9, marginBottom: "12px" }}>
+                Tap the <strong>...</strong> menu above and select <strong>&quot;Open in Safari&quot;</strong>
+              </p>
+              <p style={{ fontSize: "14px", opacity: 0.6 }}>
+                Or copy this link and paste it in Safari
+              </p>
+            </div>
+          ) : (
+            <div
+              style={{
+                background: "rgba(255,255,255,0.1)",
+                borderRadius: "16px",
+                padding: "24px",
+                marginBottom: "20px",
+                textAlign: "left",
+              }}
+            >
+              <p style={{ fontSize: "15px", fontWeight: 700, marginBottom: "16px" }}>
+                To claim your free week:
+              </p>
+              <p style={{ fontSize: "14px", opacity: 0.9, marginBottom: "12px" }}>
+                <strong>Step 1:</strong> Download Memori from the App Store
+              </p>
+              <p style={{ fontSize: "14px", opacity: 0.9, marginBottom: "12px" }}>
+                <strong>Step 2:</strong> Open this link again after installing
+              </p>
+              <p style={{ fontSize: "14px", opacity: 0.6 }}>
+                The link will activate your free Pro week automatically
+              </p>
+            </div>
+          )}
+          {isInAppBrowser ? (
+            <button
+              onClick={() => {
+                navigator.clipboard.writeText(window.location.href);
+                alert("Link copied! Paste it in Safari to claim your free week.");
+              }}
+              style={{
+                display: "block",
+                width: "100%",
+                background: "linear-gradient(135deg, #3885f5, #7c5ce0)",
+                color: "white",
+                padding: "16px 48px",
+                borderRadius: "16px",
+                fontSize: "18px",
+                fontWeight: 700,
+                border: "none",
+                cursor: "pointer",
+              }}
+            >
+              Copy Link
+            </button>
+          ) : (
+            <a
+              href="https://apps.apple.com/app/id6760178716"
+              style={{
+                display: "block",
+                background: "linear-gradient(135deg, #3885f5, #7c5ce0)",
+                color: "white",
+                padding: "16px 48px",
+                borderRadius: "16px",
+                fontSize: "18px",
+                fontWeight: 700,
+                textDecoration: "none",
+              }}
+            >
+              Download Memori
+            </a>
+          )}
         </div>
       ) : (
         <>
