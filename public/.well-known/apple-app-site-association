@@ -1,0 +1,11 @@
+{
+  "applinks": {
+    "apps": [],
+    "details": [
+      {
+        "appID": "73668242TN.com.dylanmiller.mindrestore",
+        "paths": ["/challenge", "/challenge?*", "/challenge/*"]
+      }
+    ]
+  }
+}
