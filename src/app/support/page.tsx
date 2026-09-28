@@ -1,8 +1,8 @@
 import Link from "next/link";
 
 export const metadata = {
-  title: "Support — Memori",
-  description: "Get help with Memori. FAQ, troubleshooting, and contact information.",
+  title: "Support — Memo",
+  description: "Get help with Memo. FAQ, troubleshooting, and contact information.",
 };
 
 export default function Support() {
@@ -11,8 +11,8 @@ export default function Support() {
       <nav className="fixed top-0 z-50 w-full border-b border-black/5 bg-page-bg/80 backdrop-blur-xl">
         <div className="mx-auto flex h-14 max-w-6xl items-center px-6">
           <Link href="/" className="flex items-center gap-2.5">
-            <img src="/app-icon.png" alt="Memori" className="h-7 w-7 rounded-lg" />
-            <span className="text-base font-bold text-text-primary">Memori</span>
+            <img src="/app-icon.png" alt="Memo" className="h-7 w-7 rounded-lg" />
+            <span className="text-base font-bold text-text-primary">Memo</span>
           </Link>
         </div>
       </nav>
@@ -42,40 +42,40 @@ export default function Support() {
 
         <div className="space-y-4">
           <FaqItem
-            q="Is Memori really free?"
-            a="Yes! All 8 cognitive games are available to everyone. Free users can play 3 training sessions per day. Memori Pro ($3.99/mo or $19.99/yr) unlocks unlimited training."
+            q="How does Memo block apps?"
+            a="Memo uses Apple's Screen Time. You pick the apps to block, and when you open one, Memo steps in. Play a quick brain game and the app unlocks for a few minutes, then it locks again."
           />
           <FaqItem
-            q="How is my Brain Score calculated?"
-            a="Your Brain Score is based on a 2-minute assessment testing three cognitive areas: digit span (memory), reaction time (processing speed), and visual memory (attention). The composite score ranges from 0-1000."
+            q="Can't I just get around it?"
+            a="You can always turn Screen Time access off in iOS Settings, since it's your phone. But it's a few taps and a moment to think, and a quick game is usually the easier path. That pause is the point."
           />
           <FaqItem
-            q="Is my data private?"
-            a="Absolutely. All your data stays on your device. We don't collect any personal information, use analytics, or have cloud servers. Your brain data is yours alone."
+            q="How much does Memo cost?"
+            a="Memo requires Memo Pro. The annual plan is $39.99/year and includes a 7-day free trial for eligible new subscribers. There's also a weekly plan at $3.99/week. The exact price for your country is shown in the app before you buy."
           />
           <FaqItem
             q="How do I cancel my subscription?"
-            a="Open the Settings app on your iPhone → tap your name → Subscriptions → Memori Pro → Cancel Subscription. You'll keep Pro access until the end of your billing period."
+            a="Open the Settings app on your iPhone → tap your name → Subscriptions → Memo → Cancel Subscription. Cancel at least 24 hours before your trial or billing period ends to avoid the next charge. Deleting the app does not cancel your subscription."
           />
           <FaqItem
             q="How do I restore my purchase on a new device?"
-            a="Open Memori → go to the Profile tab → tap 'Restore Purchases'. Your Pro subscription is tied to your Apple ID and will be restored automatically."
+            a="Open Memo → Profile → tap the gear icon → Restore Purchases. Your subscription is tied to your Apple ID."
           />
           <FaqItem
-            q="What does Brain Age mean?"
-            a="Brain Age estimates your cognitive performance relative to age norms. A Brain Age lower than your actual age means above-average performance. It's for entertainment purposes, not a medical assessment."
+            q="Can Memo see which apps I use?"
+            a="No. Apple only gives Memo anonymous tokens for the apps you pick, and they stay on your device. See our Privacy Policy for what we do collect."
+          />
+          <FaqItem
+            q="Apps aren't getting blocked. What should I do?"
+            a="Check that Screen Time access is still on for Memo in iOS Settings → Screen Time, then open Memo and re-select your apps. Make sure you're on the latest version from the App Store. Still stuck? Email us with your iOS version."
           />
           <FaqItem
             q="How do leaderboards work?"
-            a="Leaderboards use Apple's Game Center. Sign in to Game Center in your iPhone settings, and your scores will automatically appear on global leaderboards."
+            a="Leaderboards use Apple's Game Center. Sign in to Game Center in iOS Settings and your scores will show up automatically."
           />
           <FaqItem
             q="How do I delete my data?"
-            a="Go to Profile → scroll to the bottom → tap 'Reset All Data'. This permanently deletes all scores, streaks, and achievements. Uninstalling the app also removes all data."
-          />
-          <FaqItem
-            q="The app isn't working correctly. What should I do?"
-            a="Try closing and reopening the app. Make sure you're running the latest version from the App Store. If it still doesn't work, email us with a description of the problem and your iOS version."
+            a="Open Memo → Profile → tap the gear icon → Reset All Data. Deleting the app also removes everything stored on your device. To delete analytics data we hold, email us."
           />
         </div>
 
@@ -83,7 +83,7 @@ export default function Support() {
         <div className="mt-12 card p-7">
           <h2 className="mb-2 text-lg font-bold text-text-primary">Manage Subscription</h2>
           <p className="mb-4 text-sm text-text-secondary">
-            View, change, or cancel your Memori Pro subscription through Apple.
+            View, change, or cancel your Memo Pro subscription through Apple.
           </p>
           <a
             href="https://apps.apple.com/account/subscriptions"
