@@ -3,8 +3,6 @@ import Link from "next/link";
 import { DownloadDock } from "./download-dock";
 import { APP_STORE_URL } from "@/lib/links";
 
-const PRICE_LINE = "Free for 7 days, then $39.99/year";
-
 export function AppStoreBadge({ id, className = "" }: { id?: string; className?: string }) {
   return (
     <a
@@ -101,7 +99,6 @@ function Hero() {
           Want TikTok back? Beat a quick brain game first.
         </p>
         <AppStoreBadge id="hero-download" className="mt-6" />
-        <p className="mt-3 text-sm font-semibold text-ink/55">{PRICE_LINE}</p>
       </div>
 
       {/* The stage: phone on the hill, stickers floating, Memo standing by */}
@@ -202,9 +199,6 @@ function Closing() {
           <span className="text-accent">More brain.</span>
         </h2>
         <AppStoreBadge id="closing-download" className="mt-7" />
-        <p className="mt-3 max-w-xs text-sm font-semibold text-ink/60">
-          7-day free trial for new subscribers, then $39.99/year. Cancel anytime in Settings.
-        </p>
       </div>
 
       <div className="relative mt-6 h-[300px] sm:h-[360px]">
