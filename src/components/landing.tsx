@@ -1,6 +1,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import { DownloadDock } from "./download-dock";
+import { InAppBrowserHint } from "./in-app-browser-hint";
 import { APP_STORE_URL, appStoreUrl } from "@/lib/links";
 
 export function AppStoreBadge({ id, className = "", href = APP_STORE_URL }: { id?: string; className?: string; href?: string }) {
@@ -234,6 +235,7 @@ export function Landing({ campaign = "website" }: { campaign?: string }) {
       <HowItWorks />
       <Closing href={href} />
       <DownloadDock watch={["hero-download", "closing-download"]} href={href} />
+      <InAppBrowserHint />
     </main>
   );
 }
