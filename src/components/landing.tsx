@@ -1,13 +1,13 @@
 import Image from "next/image";
 import Link from "next/link";
 import { DownloadDock } from "./download-dock";
-import { APP_STORE_URL } from "@/lib/links";
+import { APP_STORE_URL, appStoreUrl } from "@/lib/links";
 
-export function AppStoreBadge({ id, className = "" }: { id?: string; className?: string }) {
+export function AppStoreBadge({ id, className = "", href = APP_STORE_URL }: { id?: string; className?: string; href?: string }) {
   return (
     <a
       id={id}
-      href={APP_STORE_URL}
+      href={href}
       aria-label="Download Memo on the App Store"
       className={`inline-block transition-transform active:scale-95 ${className}`}
     >
@@ -69,7 +69,7 @@ const STICKERS = [
   { src: "/img/icon-x.png", alt: "X", pos: "right-[4%] top-[36%] sm:right-[18%]", tilt: "-9deg", delay: "1.7s" },
 ];
 
-function Hero() {
+function Hero({ href }: { href: string }) {
   return (
     <section className="sky-day relative overflow-hidden">
       <Cloud className="left-[-4%] top-[16%] w-24 opacity-95 sm:w-36" />
@@ -81,7 +81,7 @@ function Hero() {
           <span className="text-xl font-extrabold tracking-tight text-ink">Memo</span>
         </Link>
         <a
-          href={APP_STORE_URL}
+          href={href}
           className="rounded-full border-2 border-ink bg-white px-4 py-1.5 text-sm font-extrabold text-ink shadow-[0_3px_0_#0B1B22]"
         >
           Get the app
@@ -93,12 +93,12 @@ function Hero() {
         <h1 className="display mt-5 text-[clamp(2.6rem,12.2vw,5.4rem)] text-ink">
           Block apps.
           <br />
-          <span className="text-accent">Play to unlock.</span>
+          <span className="text-accent">Train to unlock.</span>
         </h1>
         <p className="mt-4 max-w-md text-lg font-medium text-ink/75 sm:text-xl">
           Want TikTok back? Beat a quick brain game first.
         </p>
-        <AppStoreBadge id="hero-download" className="mt-6" />
+        <AppStoreBadge id="hero-download" className="mt-6" href={href} />
       </div>
 
       {/* The stage: phone on the hill, stickers floating, Memo standing by */}
@@ -189,7 +189,7 @@ function HowItWorks() {
   );
 }
 
-function Closing() {
+function Closing({ href }: { href: string }) {
   return (
     <section className="sky-sunset relative overflow-hidden">
       <div className="relative z-10 mx-auto flex max-w-2xl flex-col items-center px-5 pt-16 text-center">
@@ -198,7 +198,7 @@ function Closing() {
           <br />
           <span className="text-accent">More brain.</span>
         </h2>
-        <AppStoreBadge id="closing-download" className="mt-7" />
+        <AppStoreBadge id="closing-download" className="mt-7" href={href} />
       </div>
 
       <div className="relative mt-6 h-[300px] sm:h-[360px]">
@@ -225,13 +225,15 @@ function Closing() {
   );
 }
 
-export function Landing() {
+/** `campaign` tags every App Store button, so each traffic source gets its own row in App Store Connect. */
+export function Landing({ campaign = "website" }: { campaign?: string }) {
+  const href = appStoreUrl(campaign);
   return (
     <main>
-      <Hero />
+      <Hero href={href} />
       <HowItWorks />
-      <Closing />
-      <DownloadDock watch={["hero-download", "closing-download"]} />
+      <Closing href={href} />
+      <DownloadDock watch={["hero-download", "closing-download"]} href={href} />
     </main>
   );
 }

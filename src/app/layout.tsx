@@ -16,7 +16,7 @@ const description =
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://getmemoriapp.com"),
-  title: { default: `${title} — Block apps. Play to unlock.`, template: "%s — Memo" },
+  title: { default: `${title} — Block apps. Train to unlock.`, template: "%s — Memo" },
   description,
   keywords:
     "app blocker, screen time, doomscrolling, block tiktok, block instagram, focus, study, brain games, dopamine detox",
@@ -26,15 +26,15 @@ export const metadata: Metadata = {
   },
   itunes: { appId: "6760178716" },
   openGraph: {
-    title: "Block apps. Play to unlock.",
+    title: "Block apps. Train to unlock.",
     description,
     type: "website",
     siteName: "Memo",
-    images: [{ url: "/og.png", width: 1200, height: 630, alt: "Memo: Block apps. Play to unlock." }],
+    images: [{ url: "/og.png", width: 1200, height: 630, alt: "Memo: Block apps. Train to unlock." }],
   },
   twitter: {
     card: "summary_large_image",
-    title: "Block apps. Play to unlock.",
+    title: "Block apps. Train to unlock.",
     description,
     images: ["/og.png"],
   },

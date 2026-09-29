@@ -5,7 +5,7 @@ import { APP_STORE_URL } from "@/lib/links";
 
 /** App Store-style bar pinned to the bottom on phones. Shows only while no
  *  other download badge is on screen, so there is always one tap to the store. */
-export function DownloadDock({ watch }: { watch: string[] }) {
+export function DownloadDock({ watch, href = APP_STORE_URL }: { watch: string[]; href?: string }) {
   const [show, setShow] = useState(false);
 
   useEffect(() => {
@@ -33,10 +33,10 @@ export function DownloadDock({ watch }: { watch: string[] }) {
       <img src="/app-icon.png" alt="" className="h-11 w-11 rounded-[12px] border-2 border-ink" />
       <div className="min-w-0 flex-1 leading-tight">
         <p className="truncate text-[15px] font-extrabold text-ink">Memo: App Blocker</p>
-        <p className="truncate text-xs font-semibold text-ink/60">Block apps. Play to unlock.</p>
+        <p className="truncate text-xs font-semibold text-ink/60">Block apps. Train to unlock.</p>
       </div>
       <a
-        href={APP_STORE_URL}
+        href={href}
         tabIndex={show ? 0 : -1}
         className="rounded-full border-2 border-ink bg-accent px-5 py-2 text-[15px] font-extrabold text-white shadow-[0_3px_0_#0B1B22] active:translate-y-[2px] active:shadow-[0_1px_0_#0B1B22]"
       >
