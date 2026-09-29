@@ -28,7 +28,7 @@ export default function PrivacyPolicy() {
         <div className="space-y-8 text-text-secondary leading-relaxed [&_h2]:mb-3 [&_h2]:mt-8 [&_h2]:text-lg [&_h2]:font-bold [&_h2]:text-text-primary [&_strong]:text-text-primary [&_ul]:ml-6 [&_ul]:list-disc [&_ul]:space-y-1 [&_a]:font-bold [&_a]:text-accent [&_a]:underline">
           <section>
             <h2>The Short Version</h2>
-            <p>Memo: Screen Time App Blocker (&quot;Memo&quot;) does not have accounts. We never ask for your name, email, or phone number. We cannot see which apps you block or how you use them. We collect anonymous usage analytics and purchase records so we can improve the App and manage subscriptions. We do not sell your data and do not use it for advertising.</p>
+            <p>Memo: Screen Time App Blocker (&quot;Memo&quot;) does not have accounts. We never ask for your name, email, or phone number. We cannot see which apps you block or how you use them. If you use Study Mode, the notes you choose are sent to an AI provider to write quiz questions and are not stored. We collect anonymous usage analytics and purchase records so we can improve the App and manage subscriptions. We do not sell your data and do not use it for advertising.</p>
           </section>
 
           <section>
@@ -38,7 +38,21 @@ export default function PrivacyPolicy() {
 
           <section>
             <h2>Data Stored on Your Device</h2>
-            <p>Your game results, scores, streaks, settings, and focus history are stored locally on your device. Deleting the App deletes this data.</p>
+            <p>Your game results, scores, streaks, settings, focus history, and Study Mode quizzes are stored locally on your device. Deleting the App deletes this data.</p>
+          </section>
+
+          <section>
+            <h2>Study Mode: Notes You Scan or Import</h2>
+            <p>Study Mode turns your own notes into quiz questions. It only runs when you choose to add notes, and the App asks for your consent before the first time. Here is exactly what happens to them:</p>
+            <ul className="mt-3">
+              <li><strong>Reading the page happens on your phone.</strong> When you scan a page, pick a photo, or import a PDF, the App recognizes the text on your device using Apple&apos;s Vision framework.</li>
+              <li><strong>Printed or typed pages:</strong> only the recognized text is sent to write the questions, not the photo.</li>
+              <li><strong>Handwritten or scanned pages:</strong> the App sends a resized image of the page, cut into slices, because handwriting can&apos;t be read reliably on the device.</li>
+              <li><strong>PDFs with selectable text:</strong> only that text is sent.</li>
+            </ul>
+            <p className="mt-3">The text or images go to our server, which passes them to an AI model (DeepSeek, run by hosting providers in the United States through OpenRouter) that writes the questions and sends them back. We don&apos;t store your notes or the images on our server, we don&apos;t log their content, and we only use providers that agree not to store them or use them to train AI models. The questions are saved on your device only.</p>
+            <p className="mt-3">To confirm you have a subscription, the App sends the signed App Store transaction for your subscription with each request. To prevent abuse, our server keeps a count of how many pages each subscription made that day, keyed to its App Store transaction ID. The count is deleted after two days. Our analytics record only counts and timings for Study Mode (for example, how many pages or questions, and how long they took), never the content of your notes.</p>
+            <p className="mt-3">Please don&apos;t scan pages that contain other people&apos;s personal information or anything you don&apos;t want sent to an AI provider.</p>
           </section>
 
           <section>
@@ -67,6 +81,8 @@ export default function PrivacyPolicy() {
               <li><strong>PostHog</strong>: product analytics and onboarding recordings (<a href="https://posthog.com/privacy">privacy policy</a>)</li>
               <li><strong>RevenueCat</strong>: subscription management (<a href="https://www.revenuecat.com/privacy">privacy policy</a>)</li>
               <li><strong>Apple</strong>: App Store payments, Screen Time, and Game Center (<a href="https://www.apple.com/legal/privacy/">privacy policy</a>)</li>
+              <li><strong>OpenRouter</strong> and the AI hosting providers it routes to: writing Study Mode questions, with data storage and training turned off (<a href="https://openrouter.ai/privacy">privacy policy</a>)</li>
+              <li><strong>Vercel</strong> and <strong>Upstash</strong>: hosting our Study Mode server and its daily usage counter (<a href="https://vercel.com/legal/privacy-policy">Vercel privacy policy</a>, <a href="https://upstash.com/trust/privacy.pdf">Upstash privacy policy</a>)</li>
             </ul>
             <p className="mt-3">These providers process data on our behalf and only to provide their services to us.</p>
           </section>
