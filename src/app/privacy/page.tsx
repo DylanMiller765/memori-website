@@ -23,7 +23,7 @@ export default function PrivacyPolicy() {
         </div>
 
         <h1 className="mb-2 text-3xl font-black text-text-primary">Privacy Policy</h1>
-        <p className="mb-10 text-sm font-medium text-text-tertiary">Last updated: September 28, 2026</p>
+        <p className="mb-10 text-sm font-medium text-text-tertiary">Last updated: October 1, 2026</p>
 
         <div className="space-y-8 text-text-secondary leading-relaxed [&_h2]:mb-3 [&_h2]:mt-8 [&_h2]:text-lg [&_h2]:font-bold [&_h2]:text-text-primary [&_strong]:text-text-primary [&_ul]:ml-6 [&_ul]:list-disc [&_ul]:space-y-1 [&_a]:font-bold [&_a]:text-accent [&_a]:underline">
           <section>
@@ -52,6 +52,7 @@ export default function PrivacyPolicy() {
             </ul>
             <p className="mt-3">The text or images go to our server, which passes them to an AI model (DeepSeek, run by hosting providers in the United States through OpenRouter) that writes the questions and sends them back. We don&apos;t store your notes or the images on our server, we don&apos;t log their content, and we only use providers that agree not to store them or use them to train AI models. The questions are saved on your device only.</p>
             <p className="mt-3">To confirm you have a subscription, the App sends the signed App Store transaction for your subscription with each request. To prevent abuse, our server keeps a count of how many pages each subscription made that day, keyed to its App Store transaction ID. The count is deleted after two days. Our analytics record only counts and timings for Study Mode (for example, how many pages or questions, and how long they took), never the content of your notes.</p>
+            <p className="mt-3"><strong>The free try during setup.</strong> While setting up Memo, before you subscribe, you can scan one page and see a few questions written from it. There is no subscription to check yet, so the App proves it is the genuine Memo app on a real iPhone with Apple&apos;s App Attest. That sends our server an Apple-signed, device-specific key, which carries no name, email, or Apple ID. Our server records that the key has used its one free page (kept for 90 days) and counts free pages per internet address per day (kept for two days). The page itself is handled exactly as described above and is never stored. If the free try can&apos;t run, the App shows a sample page instead. The questions it wrote stay on your device and become your first quiz if you subscribe.</p>
             <p className="mt-3">Please don&apos;t scan pages that contain other people&apos;s personal information or anything you don&apos;t want sent to an AI provider.</p>
           </section>
 
