@@ -23,7 +23,7 @@ export default function PrivacyPolicy() {
         </div>
 
         <h1 className="mb-2 text-3xl font-black text-text-primary">Privacy Policy</h1>
-        <p className="mb-10 text-sm font-medium text-text-tertiary">Last updated: October 1, 2026</p>
+        <p className="mb-10 text-sm font-medium text-text-tertiary">Last updated: October 2, 2026</p>
 
         <div className="space-y-8 text-text-secondary leading-relaxed [&_h2]:mb-3 [&_h2]:mt-8 [&_h2]:text-lg [&_h2]:font-bold [&_h2]:text-text-primary [&_strong]:text-text-primary [&_ul]:ml-6 [&_ul]:list-disc [&_ul]:space-y-1 [&_a]:font-bold [&_a]:text-accent [&_a]:underline">
           <section>
@@ -58,7 +58,7 @@ export default function PrivacyPolicy() {
 
           <section>
             <h2>Data We Collect</h2>
-            <p><strong>Usage analytics (PostHog).</strong> When you use the App, we record events such as screens viewed, onboarding steps, games started and finished, scores, streak length, paywall views, and subscription status. We also record basic device and app information (device model, iOS version, app version, language, and approximate country derived from IP address). These events are tied to a random ID generated on your device, not to your name or Apple ID. If you answer &quot;Where did you find Memo?&quot;, your answer is saved with this ID.</p>
+            <p><strong>Usage analytics (PostHog).</strong> When you use the App, we record events such as screens viewed, onboarding steps, games started and finished, scores, streak length, paywall views, and subscription status. We also record basic device and app information (device model, iOS version, app version, language, and approximate country derived from IP address). These events are tied to a random ID generated on your device, not to your name or Apple ID. If you answer &quot;Where did you find Memo?&quot;, your age range (for example &quot;18–24&quot;; you can skip it), or &quot;What stopped you?&quot; after the subscription screen, your answer is saved with this ID. We never ask for your exact age or birthday.</p>
             <p className="mt-3"><strong>Screen recordings of onboarding.</strong> To see where people get stuck, the App may record what appears on screen during the first-run onboarding and send that recording to PostHog. Recording stops when onboarding ends. It does not include other apps, your Screen Time selections, or payment screens handled by Apple.</p>
             <p className="mt-3"><strong>Purchases (RevenueCat).</strong> When you start a trial or subscribe, Apple processes the payment. We use RevenueCat to verify purchases and track subscription status. RevenueCat receives your App Store transaction information and the same random ID. We never see or store your payment details.</p>
             <p className="mt-3"><strong>Game Center (Apple).</strong> If you are signed in to Game Center, your scores are submitted to Apple&apos;s leaderboards and shown with your Game Center name. This is handled by Apple under Apple&apos;s privacy policy.</p>
